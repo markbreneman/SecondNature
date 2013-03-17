@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="row">
+	<div class="span8">
+
+		{% for c in user_content %}
+			<div class="row">
+				<div class="span2">
+
+					<h3>
+						{{ c.timestamp.strftime("%b. %d") }}<br>
+						{{ c.timestamp.strftime("%I:%M %p")}}
+					</h3>
+					<p>by 
+						{% if c.user.id == current_user.id %}
+							You <a href="/admin/{{c.id}}" class="btn btn-small btn-primary">edit</a>
+						{% else %}
+							<a href="/users/{{ c.user.username }}">{{ c.user.username }}</a>
+						{% endif %}
+					</p>
+				</div>
+
+				<div class="span6">
+					<h4>{{ c.title }}</h4>
+					<p>{{ c.content}}</p>
+
+				</div>
+			</div>
+			<hr>
+		{% endfor %}
+	</div>
+
+	<div class="span4">
+		<h3>All Users</h3>
+		<ul>
+		{% for u in users %}
+			<li><a href="/users/{{ u.username }}">{{u.username}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+
+{% endblock %}
