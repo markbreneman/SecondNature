@@ -1,85 +1,13 @@
-## ITP DWD Fall 2012
+## The Second Nature Project
 
-## Flask and User Management
-
-
-### Demo site to demonstrate how to 
-
-#### View Demo Site [itppy-user-demo.herokuapp.com](itppy-user-demo.herokuapp.com)
-
-* register and login users. 
-* create database documents associated to a specific user.
-* query database for documents by a user.
+* The Second Nature Project is a smartphone donation program, whereby consumers can donate their old smartphone to be transformed into wildlife observation cameras. Donated smartphones will be wiped clean of user data, equipped with a motion sensing camera application, and deployed into the wild under the supervision of wildlife researchers. When the smartphones take a picture the files are made publicly available to consumer who has donated the phone, thus engaging the consumer in the work of the wildlife researchers, while addressing the growing issue of post consumer e-waste.
 
 
-### To get started
+-----------
 
-* Download code
-* Create Git repo
+### This repo contains all the web components of the program where the use can go to donate their phone.
 
-		git init
-		git add .
-		git commit -am "init commit"
+### About
 
-* Create a virtual environment 
-
-		virtualenv venv
-
-* Install all requirements for app
-
-		. runpip
-
-	or 
-
-		. venv/bin/activate
-		pip install -r requirements.txt
-
-* Create Heroku app
-
-		heroku create
-
-* Add MongoLab Starter Addon to your app
-* Add MONGOLAB_URI from Heroku config to your .env file
-
-		heroku config --shell | grep MONGOLAB_URI >> .env
-
-### Create a SECRET_KEY for your .env and Heroku Config
-
-We need a SECRET_KEY for salting the user passwords.
-
-* Open your .env and add a new line 
-
-		SECRET_KEY=SOMETHINGSECRETANDRANDOMHERE
-
-* We need to add this secret key to Heroku config vars too
-
-		heroku config:add SECRET_KEY=SOMETHINGSECRETANDRANDOMHERE
-
-This will add a new key and value to the App on Heroku.
-
-
-## Run it
-
-With your MONGOLAB_URI and SECRET_KEY configured in .env and on Heroku config you should be good to run the code.
-
-Run,
-
-	. start
-
-or 
-
-	. venv/bin/activate
-	foreman start
-
-
-## The routes
-
-* / - main page - display all content and list of users
-* /users/&lt;username&gt;- display all content for a given user
-* /admin  - must be logged in, create a new piece of content for a user
-* /register - create a new user
-* /login - login with registered email and password
-* /logout - logout user
-
-
+http://thesis.itp.io/students/mbb395/thesis
 
