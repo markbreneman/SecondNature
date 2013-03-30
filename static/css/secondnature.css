@@ -29,7 +29,7 @@ body{
  text-shadow:none;
  color:#C1D0CD; 
  margin-top: 2.25em;
- font-family: Verlag;
+ font-family: Verlag;/
  font-size: 1.25em;
 }
 
@@ -45,7 +45,7 @@ body{
 
 
 #landing{
-  background: url(/static/img/landingimage-instant.jpg) no-repeat center center fixed; 
+  background: url(img/landingimage-instant.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
