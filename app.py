@@ -75,7 +75,7 @@ def index():
 	
 	app.logger.debug(current_user)
 
-	return render_template('all_content.html', **templateData)
+	return render_template('home.html', **templateData)
 
 
 #
@@ -307,6 +307,14 @@ def logout():
     flash("Logged out.")
     return redirect(url_for("index"))
 
+@app.route("/requirements", methods=["GET"])
+def requirements():
+	return render_template('requirements.html')
+
+@app.route("/contact", methods=["GET"])
+def contact():
+    return render_template('contact.html')
+
 
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
     return value.strftime(format)
@@ -319,4 +327,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)

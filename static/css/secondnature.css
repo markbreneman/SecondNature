@@ -1,0 +1,104 @@
+.navbar .nav {
+	float:right;
+}
+
+body{
+  padding: 0px;
+}
+
+.navbar-fixed-top{
+  margin-bottom:0px;
+}
+
+.navbar .brand{
+  font-family: CycloneInline;
+  font-size: 5em;
+  margin-top: 5px;
+  line-height:1em;
+  text-shadow:none;
+  color:#C1D0CD;
+}
+
+.navbar-inner{
+  min-height:60px;
+ background-color:rgba(35, 31, 32, 0.7);
+ background-image:none;
+}
+
+.navbar .nav>li>a{
+ text-shadow:none;
+ color:#C1D0CD; 
+ margin-top: 2.25em;
+ font-family: Verlag;
+ font-size: 1.25em;
+}
+
+.navbar .nav>li>a:hover {
+ text-shadow:none;
+ color:white;  
+/*margin-top: 2.75em;*/
+}
+
+.navbar{
+  color:none;
+}
+
+
+#landing{
+  background: url(/static/img/landingimage-instant.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100%;
+  width: 100%;
+  text-align: center;
+
+}
+
+.hero-unit{
+  -webkit-border-radius:0px;
+  border-radius:0px;
+}
+
+.navbar .btn-navbar{
+  margin-right: 30px;
+}
+
+#logo{
+  position: relative;
+	/*width:30%;*/
+  /*height:70%;*/
+  /*left: 25%;*/
+  margin-top:20%;
+}
+
+#ellipses{
+  display:block;
+  position: relative;
+  /*width:30%;/*/
+  /*height:70%;*/
+  /*left: 35%;*/
+  /*margin: 0;*/
+  margin-left: auto;
+  margin-right:auto;
+  margin-top:5%;
+  margin-bottom:5%%;
+}
+#tagline{
+font-size:4em; 
+color:white;
+font-family: Verlag;
+font-weight: lighter;
+}
+
+
+@font-face {
+font-family: CycloneInline;
+src: url("/static/fonts/Cyclone%20Inline.otf") format("opentype");
+}
+
+@font-face {
+font-family: Verlag;
+src: url("/static/fonts/Verlag%20Book.otf") format("opentype");
+}
