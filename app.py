@@ -29,7 +29,7 @@ flask_bcrypt = Bcrypt(app)
 # uses .env file to get connection string
 # using a remote db get connection string from heroku config
 # 	using a local mongodb put this in .env
-#   MONGOLAB_URI=mongodb://localhost:27017/dwdfall2012
+#   MONGOLAB_URI=mongodb://localhost:27017/secondnatureproject
 mongoengine.connect('userdemo', host=os.environ.get('MONGOLAB_URI'))
 
 # Login management defined
@@ -327,5 +327,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-# app.run(host='127.0.0.1', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)

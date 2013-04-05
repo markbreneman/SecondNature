@@ -43,7 +43,6 @@ body{
   color:none;
 }
 
-
 #landing{
   background: url('../img/Landingimageinstant.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -59,6 +58,7 @@ body{
 .hero-unit{
   -webkit-border-radius:0px;
   border-radius:0px;
+  margin-bottom: 0px;
 }
 
 .navbar .btn-navbar{
@@ -67,30 +67,98 @@ body{
 
 #logo{
   position: relative;
-	/*width:30%;*/
-  /*height:70%;*/
-  /*left: 25%;*/
   margin-top:20%;
 }
 
 #ellipses{
   display:block;
   position: relative;
-  /*width:30%;/*/
-  /*height:70%;*/
-  /*left: 35%;*/
-  /*margin: 0;*/
   margin-left: auto;
   margin-right:auto;
   margin-top:5%;
   margin-bottom:5%%;
 }
-#tagline{
+
+#tagline {
 font-size:4em; 
 color:white;
 font-family: Verlag;
 font-weight: lighter;
 }
+
+#howitworks{
+/*  padding-top: 100px;
+  margin-top: -100px;*/
+  width: 100%;
+  background-color:  rgb(26,35,38);
+}
+
+#signup{
+ background-color:  rgb(26,35,38); 
+ width: 100%;
+}
+
+#recentphotos{
+background: url('../img/RecentImagesbackground.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 600px;
+  width: 100%;
+  margin-top:  -10px; 
+}
+
+.holder{
+  
+  margin-top: -40px;
+  padding-top: 40px;
+  padding-left: 4%;
+  min-height: 500px;
+  /*height:600px;*/
+}
+.navstep{
+font-size:4em; 
+color:white;
+font-family: Verlag;
+font-weight: lighter;
+}
+
+.holdertext{
+  font-size:1em; 
+  color:white;
+  font-family: Gotham;
+  font-weight: lighter;
+  display:block;
+}
+
+.steps{
+  font-size:1em; 
+  color:white;
+  font-family: VerlagComp;
+text-align: center;     
+  float:left;
+  margin-left: auto;
+  margin-right:auto;    
+}
+
+.hline{
+  margin-left: 5%;
+}
+
+.step{
+  text-transform:  uppercase;
+  text-align: center; 
+}
+
+.caption{
+font-size:1em; 
+font-family: Gotham;
+text-align: center;   
+}
+
+
+
 
 
 @font-face {
@@ -101,4 +169,14 @@ src: url("/static/fonts/Cyclone%20Inline.otf") format("opentype");
 @font-face {
 font-family: Verlag;
 src: url("/static/fonts/Verlag%20Book.otf") format("opentype");
+}
+
+@font-face {
+font-family: VerlagComp;
+src: url("/static/fonts/VerlagComp-Bold.otf") format("opentype");
+}
+
+@font-face {
+font-family: Gotham;
+src: url("/static/fonts/Gotham%20Light.otf") format("opentype");
 }
