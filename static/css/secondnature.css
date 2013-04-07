@@ -17,6 +17,7 @@ body{
   line-height:1em;
   text-shadow:none;
   color:#C1D0CD;
+
 }
 
 .navbar-inner{
@@ -179,5 +180,5 @@ src: url("/static/fonts/VerlagComp-Bold.otf") format("opentype");
 
 @font-face {
 font-family: Gotham;
-src: url("/static/fonts/Gotham%20Light.otf") format("opentype");
+src: url("/static/fonts/Gotham-Light.otf") format("opentype");
 }
