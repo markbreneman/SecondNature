@@ -1,0 +1,378 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"get",
+				"getAttribute"
+			],
+			[
+				"noah",
+				"noahclass"
+			],
+			[
+				"normaliz",
+				"normalizedVector212"
+			],
+			[
+				"ea",
+				"earthRadius"
+			],
+			[
+				"space",
+				"spacedPoints"
+			],
+			[
+				"pos",
+				"positionVector1"
+			],
+			[
+				"po",
+				"positionVector2"
+			],
+			[
+				"S",
+				"Scene"
+			],
+			[
+				"posi",
+				"positionVector2"
+			],
+			[
+				"cros",
+				"crossProductVec"
+			],
+			[
+				"conr",
+				"controlPoint"
+			],
+			[
+				"control",
+				"controlPoint"
+			],
+			[
+				"sub",
+				"subtractionVector"
+			],
+			[
+				"Line",
+				"LineStrip"
+			],
+			[
+				"each",
+				"forEach"
+			],
+			[
+				"position",
+				"positionVector1"
+			],
+			[
+				"lat",
+				"latLongToVector3"
+			],
+			[
+				"point",
+				"point1"
+			],
+			[
+				"earth",
+				"earthRadius"
+			],
+			[
+				"eart",
+				"earthRadius"
+			],
+			[
+				"A",
+				"ASTRONAUT"
+			],
+			[
+				"marker",
+				"markerHead"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 267.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/markbreneman/Desktop/SecondNature/project",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/04 Media/04 Sound/.htaccess",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/02.22.13 Researcher Research Protocol.txt",
+		"/private/var/folders/px/cddx2lcd17g_86vrqh2y3jc00000gn/T/Cleanup At Startup/InDesign Snippets/Snippet_30751CF3D.idms",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.10.13 Week 2 Reset/index.html",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/4D440282-C901-4BC5-916E-2075F2CDBA27/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/00.00.00 -PresentationsIndex/css/reveal.min.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/00.00.00 -PresentationsIndex/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/00 -Reveal.js Master/index.html",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/1C469037-075A-49A3-BCB0-DA12876E006C/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week5-Midterm/index.html",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/03731CF5-B6C4-4740-9278-5E68E6494161/index.html",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/A9D48715-3A5A-4650-BB0D-0BEAD9E6D43F/thesis.css",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/5E0E503E-7D82-4DD9-8B45-D1BED851F434/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week5-Midterm/css/theme/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week5-Midterm/css/reveal.min.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week5-Midterm/server.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 5 - Midterm/package.json",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/B01AB238-BB9C-4655-A789-321FF1BF9941/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.25.13 Week 5/Reveal/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.25.13 Week 5/Reveal/css/theme/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/Natalie WCS.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/08.27.12 Starting Thesis Notes .txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/03.03.13 Thesis Notes.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 5 - Midterm/css/theme/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/03.01.13 Thesis Notes.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 5 - Midterm/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 5 - Midterm/index1.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 5 - Midterm/untitled.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.04.13 Initial Research/css/theme/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.10.13 Week 2 Reset/css/theme/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 3-4/css/theme/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 5 - Midterm/img/MobileKarma.png",
+		"/Users/markbreneman/Desktop/black_spider Monkey.jpg",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/03.02.13 Thesis Notes.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/02.19.13 Camera Comparison.xlsx",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/UX Workshop.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/00 Thesis Notes.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/03.01.13 Roland Kays",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 3-4/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.04.13 Initial Research/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 3-4/img/04_02.19.13Presentation.png",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/02.19.13 Week 3-4/img/07 02.19.13 Presentation.png",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/Disruption and the Maker Movement/03 Data/02.20.13 Shapeways Research Protocol.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/020413 Initial Research/css/theme/thesis.css",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/DE8EA9F4-96D8-4CA5-8AB7-5D0EA6B8BD23/thesis.css",
+		"/Users/markbreneman/Library/Caches/Cleanup At Startup/Transmit/46563019-2A62-4E8E-A5F6-18225729E8C3/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/021013 Week 2 Reset/css/theme/thesis.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/021013 Week 2 Reset/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/020413 Initial Research/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/021013 Week 2 Reset/css/reveal.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/021013 Week 2 Reset/js/reveal.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/021013 Week 2 Reset/css/reveal.min.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/021013 Week 2 Reset/img/FilamentContact.jpg",
+		"/Users/markbreneman/Documents/Eclipse - Workspace/README.md",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/06 Presentations/020413 Initial Research/package.json",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/Research Protocol Leaders.txt",
+		"/Users/markbreneman/Documents/ITP/Classes/Spring2013/THESIS/03 Data/Research Protocol Users.txt",
+		"/etc/hosts",
+		"/Users/markbreneman/Desktop/Keyshot Instructions",
+		"/Users/markbreneman/Downloads/itp-thesis-progress-master/readme.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-12-28-PrintingCode-Redux.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-12-30-UnderstandingNetworkSensitiveBuildingMashup.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_includes/head.html",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-12-30-UNSB-Mashup-01.jpg",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-12-30-UNSB-Mashup-15.jpg",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-11-21-PrintingCode-FinalProposal.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-11-07-MakeMatics-Touche.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_includes/custom/head.html",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-12-30-UNSB-Mashup-31.jpg",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/Rakefile",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/Gemfile",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/Generated/index.html",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/config.ru",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-12-30-UNSB-Mashup-14.jpg",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_includes/header.html",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-09-23-MakeMatics-MarchingSquares-Project.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-09-25-Understanding-Networks-NetworkedPongProject.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-10-02-Understanding-Networks-TraceRoutesandZColo01.jpg",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-09-11-S+B-Anne-Marie-Interview.pdf",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-10-30-MakeMatics-Week4.md",
+		"/Users/markbreneman/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-10-22-MakeMatics-SVM-SpiceIndex.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-12-02-MakeMatics-Touche.png",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-11-07-MakeMatics-Week5.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-12-01-MakeMatics-Week6.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-11-21-PrintingCode-FinalProposal-XOXO-ID1.jpeg",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_layouts/default.html",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/javascripts/responsiveslides.min.js",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-08-29-ApronAlert-TextMessage.png",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-11-07-MakeMatics-PCA-SpinArt.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/.rvmrc",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Understanding Networks/05 Outgoing Information/IPCameraControl/IPCameraControl.sublime-project",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-11-07-MakeMatics-PCA - SpinArt.md",
+		"/Users/markbreneman/Desktop/HBehrens-CamHolderApp-6022d0d/README.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/_posts/2012-10-20-MakeMatics-Week3.md",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-10-22-MakeMatics-SVM-SpiceIndex-04.jpg",
+		"/Users/markbreneman/Documents/00 Portfolio and Resume/00 Website/2012 Website Redesign/03 Data/markbreneman.com-blog/source/images/2012-10-22-MakeMatics-SVM-SpiceIndex-00.jpg",
+		"/Users/markbreneman/Downloads/svm models/README",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/MakeMatics/05 Outgoing Information/102012-Source Localization/slides/slidesref.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/MakeMatics/05 Outgoing Information/102012-Source Localization/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/MakeMatics/05 Outgoing Information/102012-Source Localization/slides/slides.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/MakeMatics/05 Outgoing Information/102012-Source Localization/sourcelocalization/app.yaml",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/MakeMatics/05 Outgoing Information/102012-Source Localization/app/main.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/styles/base.css",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/templates/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/scripts/application.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/scripts/curve.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/01 Incoming Information/mrdoob-three.js-ef5f05d/examples/webgl_geometry_shapes.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/media/Space02.jpg",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/01 Incoming Information/twitterEarth/twitterearth.sublime-project",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/templates/simpleline.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/01 Incoming Information/mrdoob-three.js-ef5f05d/examples/webgl_ribbons.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/media/earthTexture.png",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/01 Incoming Information/boilerplate/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/scripts/THREEx.screenshot.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/scripts/GUI Start",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/application.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/templates/TwitterEarth.sublime-workspace",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/01 Incoming Information/twitterEarth/templates/index.html",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/01 Incoming Information/boilerplate/101512Boilerplate.sublime-project",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/index.py",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/scripts/extramodels.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/static/models/MESSENGER.dae",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS-GlobePoints/app.yaml",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101412 ThreeJS Boilerplate-mb/js/application-mb.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101112 ThreeJS-GlobePoints/static/scripts/application.js",
+		"/Users/markbreneman/Documents/ITP/Classes/Fall 2012/Visualizing JS/05 Outgoing Information/101112 ThreeJS-GlobePoints/static/scripts/three.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"1",
+			"2012-12-28-PrintingCode-Redux-02.jpg\" alt=\"\" /></li>\n\n<li><img src=\"http://www.markbreneman.com/blog/images/2012-12-28-P",
+			"surface ",
+			"tweets",
+			"tweetIndex",
+			"line",
+			"space",
+			"skybox",
+			"scene",
+			"render",
+			"camera",
+			"controls",
+			"createSpaced",
+			"cubic",
+			"bezier",
+			"position.y",
+			"renderer",
+			"render",
+			"inline",
+			"- Hold down <i>A</i> and move your mouse around to rotate around the scene.\n                        - Hold down <i>S</i> and move your mouse up or down to zoom.\n                        - Hold down <i>D</i> and move your mouse around to pan.",
+			"print",
+			"webgl",
+			"scene",
+			"dae"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"galaxyBox"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 211.0,
+	"status_bar_visible": true
+}

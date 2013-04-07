@@ -1,12 +1,21 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <title>Second Nature Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" 
       type="image/png" 
       href="../static/favicon.ico">
+=======
+    <title>Flask User Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
     {% block meta %}{% endblock %}
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -17,7 +26,10 @@
     <!-- Le styles -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">
+<<<<<<< HEAD
     <link href="{{ url_for('static', filename='css/secondnature.css') }}" rel="stylesheet">
+=======
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
     
     {% block styles %}{% endblock %}
     
@@ -26,23 +38,35 @@
 
   <body>
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
   <!-- Navbar
     ================================================== -->
  <div class="navbar navbar-fixed-top">
    <div class="navbar-inner">
      <div class="container">
+<<<<<<< HEAD
        <a class="brand" href="../">The Second Nature Project</a>
        
+=======
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </a>
+<<<<<<< HEAD
       
+=======
+       <a class="brand" href="../">Flask User Example</a>
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
        <div class="nav-collapse" id="main-menu">
         <div class="nav-collapse">
             <ul class="nav">
               {% if current_user.is_anonymous() %}
+<<<<<<< HEAD
               <li><a href="/#HowitWorks">How it Works</a></li>
               <li><a href="/#RecentPhotos">Recent Photos</a></li>
               <li><a href="/login">Login</a></li>
@@ -52,6 +76,14 @@
 
               {% else %}
               <li><a href="/photostream">Photostream</a></li>
+=======
+              
+              <li><a href="/login">Login</a></li>
+              <li><a href="/register">Register</a></li>
+              
+              {% else %}
+
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
               <li><a href="/users/{{current_user.username}}">My posts</a></li>
               <li><a href="/admin">Write a new post</a></li>
               <li><a href="/logout">Logout {{ current_user.username}}</a></li>
@@ -65,10 +97,36 @@
    </div>
  </div>
 
+<<<<<<< HEAD
     <section id="mainbody">
     {% block body %}
     {% endblock %}
     </section> 
+=======
+  <div class="container">
+
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        
+      <div class="row">
+        <div class="column span12">
+          <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message|safe }}</li>
+          {% endfor %}
+          </ul>
+      </div>
+      </div>
+      {% endif %}
+    {% endwith %}
+    
+    <br><br>
+
+    <section id="mainbody">
+    {% block body %}{% endblock %}
+    </section>
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
 
     <!-- Footer
     ================================================== -->
@@ -82,7 +140,11 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<<<<<<< HEAD
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+=======
+    <script src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"></script>
+>>>>>>> 7060883a177d89bcca6f32152f5ce0736df6b521
     {% block scripts %}{% endblock %}
 
   </body>
