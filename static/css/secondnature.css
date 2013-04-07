@@ -1,37 +1,48 @@
-.navbar .nav {
-	float:right;
-}
-
 body{
   padding: 0px;
 }
 
-.navbar-fixed-top{
+/*.navbar-fixed-top{
   margin-bottom:0px;
 }
+*/
 
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* Remove border and change up box shadow for more contrast */
+  .navbar .navbar-inner {
+    border: 0;
+    background-color:rgba(35, 31, 32, 0.7);
+    background-image:none;
+  }
+
+/* Downsize the brand/project name a bit */
 .navbar .brand{
   font-family: CycloneInline;
   font-size: 5em;
-  margin-top: 5px;
+  padding: 20px 20px 5px; /* Increase vertical padding to match navbar links */
   line-height:1em;
   text-shadow:none;
   color:#C1D0CD;
-
 }
 
-.navbar-inner{
-  min-height:60px;
-  background-color:rgba(35, 31, 32, 0.7);
-  background-image:none;
-  border:none;
-}
+.navbar .nav {
+margin: 20px 10px 0 0;
+  }
 
+/* Navbar links: increase padding for taller navbar */
 .navbar .nav>li>a{
+ padding: 30px 30px;
  text-shadow:none;
  color:#C1D0CD; 
- margin-top: 2.25em;
- font-family: Verlag;/
+ font-family: Verlag;
  font-size: 1.25em;
 }
 
@@ -41,126 +52,242 @@ body{
 /*margin-top: 2.75em;*/
 }
 
+/* Offset the responsive button for proper vertical alignment */
+.navbar .btn-navbar {
+  margin-top:25px;
+}
+
 .navbar{
   color:none;
 }
 
-#landing{
-  background: url('../img/Landingimageinstant.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  min-height: 100%;
-  width: 100%;
-  text-align: center;
-
-}
-
-.hero-unit{
-  -webkit-border-radius:0px;
-  border-radius:0px;
+.carousel {
   margin-bottom: 0px;
 }
 
-.navbar .btn-navbar{
-  margin-right: 30px;
+.carousel .container {
+  position: relative;
+  z-index: 9;
+}
+
+.carousel .item {
+  height: 700px;
+}
+.carousel img {
+  position: absolute;
+}
+
+.carousel-caption {
+  background-color: transparent;
+  position: static;
+  max-width: 550px;
+  padding: 0 20px;
+  margin-top: 200px;
+}
+.carousel-caption h1,
+.carousel-caption .lead {
+  margin: 0;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+.carousel-caption .btn {
+  margin-top: 10px;
+}
+
+.logoCaption{
+  text-align: center;
 }
 
 #logo{
-  position: relative;
-  margin-top:20%;
-}
+      width: 45%;
+      margin-top:20%;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
 
-#ellipses{
-  display:block;
-  position: relative;
-  margin-left: auto;
-  margin-right:auto;
-  margin-top:5%;
-  margin-bottom:5%%;
-}
+    #ellipses{
+      display:block;
+      position: relative;
+      margin-left: auto;
+      margin-right:auto;
+      margin-top:5%;
+      margin-bottom: 2%;
+      width: 30%;
+    }
 
-#tagline {
-font-size:4em; 
-color:white;
-font-family: Verlag;
-font-weight: lighter;
-}
+    #tagline {
+      font-size: 2.25em; 
+      color:white;
+      font-family: Verlag;
+      font-weight: lighter;
+    }
 
-#howitworks{
-/*  padding-top: 100px;
-  margin-top: -100px;*/
-  width: 100%;
-  background-color:  rgb(26,35,38);
-}
+/* MARKETING CONTENT
+    -------------------------------------------------- */
 
-#signup{
- background-color:  rgb(26,35,38); 
- width: 100%;
-}
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
 
-#recentphotos{
-background: url('../img/RecentImagesbackground.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  min-height: 600px;
-  width: 100%;
-  margin-top:  -10px; 
-}
+   /* Featurettes
+    ------------------------- */
 
-.holder{
-  
-  margin-top: -40px;
-  padding-top: 40px;
-  padding-left: 4%;
-  min-height: 500px;
-  /*height:600px;*/
-}
-.navstep{
-font-size:4em; 
-color:white;
-font-family: Verlag;
-font-weight: lighter;
-}
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
 
-.holdertext{
-  font-size:1em; 
-  color:white;
-  font-family: Gotham;
-  font-weight: lighter;
-  display:block;
-}
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
 
-.steps{
-  font-size:1em; 
-  color:white;
-  font-family: VerlagComp;
-text-align: center;     
-  float:left;
-  margin-left: auto;
-  margin-right:auto;    
-}
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
 
-.hline{
-  margin-left: 5%;
-}
+/* RESPONSIVE CSS
+    -------------------------------------------------- */
 
-.step{
-  text-transform:  uppercase;
-  text-align: center; 
-}
+    @media (max-width: 1300px) {
+      .navbar .nav>li>a {
+      padding: 30px 15px;
+      text-shadow: none;
+      color: #C1D0CD;
+      font-family: Verlag;
+      }
+    }
 
-.caption{
-font-size:1em; 
-font-family: Gotham;
-text-align: center;   
-}
+    @media (max-width: 1150px) {
+      .navbar .nav>li>a {
+      padding: 30px 10px;
+      text-shadow: none;
+      color: #C1D0CD;
+      font-family: Verlag;
+      font-size: 1.15em;
+      }
+
+      .navbar .brand{
+      font-size: 4.75 em;
+      }
+    }
+
+    @media (max-width: 1050px) {
+       .navbar .nav>li>a {
+      padding: 22px 10px;
+      text-shadow: none;
+      color: #C1D0CD;
+      font-family: Verlag;
+      font-size: 1.15em;
+      }
+
+      .navbar .brand{
+      font-size: 4em;
+      }
+    }
 
 
+    @media (max-width: 979px) {
 
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        /*height: 500px;*/
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+     @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+      .navbar .brand{
+      font-size: 3em;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        /*height: 300px;*/
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    }
 
 
 @font-face {

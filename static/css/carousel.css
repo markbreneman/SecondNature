@@ -83,10 +83,6 @@
     }
     .carousel img {
       position: absolute;
-      /*top: 0;
-      left: 0;
-      min-width: 100%;*/
-      /*height: 500px;*/
     }
 
     .carousel-caption {
@@ -260,6 +256,7 @@
         font-size: 18px;
         line-height: 1.5;
       }
+    }
 
 /* FONTS
     -------------------------------------------------- */

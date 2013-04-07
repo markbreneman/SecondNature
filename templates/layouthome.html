@@ -25,42 +25,50 @@
 
   <!-- Navbar
     ================================================== -->
- <div class="navbar navbar-fixed-top">
-   <div class="navbar-inner">
-     <div class="container">
-       <a class="brand" href="#mainbody">The Second Nature Project</a>
        
-       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </a>
-       
-       <div class="nav-collapse" id="main-menu">
-        <div class="nav-collapse">
-            <ul class="nav">
-              {% if current_user.is_anonymous() %}
-              <li><a href="#howitworks">How it Works</a></li>
-              <li><a href="#recentphotos">Recent Photos</a></li>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/register">Register</a></li>
-              <li><a href="/requirements">Requirements</a></li>
-              <li><a href="/contact">Contact</a></li>
+  <div class="navbar-wrapper">
+        <div class="navbar">
+          <div class="navbar-inner">
+             
+             <a class="brand" href="#">The Second Nature Project</a>
 
-              {% else %}
-              <li><a href="/photostream">Photostream</a></li>
-              <li><a href="/users/{{current_user.username}}">My posts</a></li>
-              <li><a href="/admin">Write a new post</a></li>
-              <li><a href="/logout">Logout {{ current_user.username}}</a></li>
-              
-              {% endif %}
-              
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-     </div>
-   </div>
- </div>
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+           
+            <div class="nav-collapse collapse">
+              <ul class="nav pull-right">
+                {% if current_user.is_anonymous() %}
+                <li><a href="/#HowitWorks">How it Works</a></li>
+                <li><a href="/#RecentPhotos">Recent Photos</a></li>
+                <!-- <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li> -->
+                
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login/Register <b class="caret"></b></a>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                  </ul>
+                </li>
+                
+                <li><a href="/requirements">Requirements</a></li>
+                <li><a href="/contact">Contact</a></li>
+
+                {% else %}
+                <li><a href="/photostream">Photostream</a></li>
+                <li><a href="/users/{{current_user.username}}">My posts</a></li>
+                <li><a href="/admin">Write a new post</a></li>
+                <li><a href="/logout">Logout {{ current_user.username}}</a></li>
+                {% endif %}
+
+              </ul><!--/.nav-->
+            </div><!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+    </div><!-- /.navbar-wrapper -->
 
     <section id="mainbody">
     {% block body %}
@@ -80,16 +88,23 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    
+
+    <script src="{{ url_for('static', filename='js/bootstrap-dropdown.js') }}"></script>
+    
+    <script src="{{ url_for('static', filename='js/bootstrap-scrollspy.js') }}"></script>
+    
     <script>
     jQuery(document).ready(function($) {
- 
-  $(".scroll").click(function(event){   
-    event.preventDefault();
-    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
-  });
-});
-</script>
+    $(".scroll").click(function(event){   
+      event.preventDefault();
+      $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+      });
+    });
+    </script>
+    
     {% block scripts %}{% endblock %}
 
   </body>
