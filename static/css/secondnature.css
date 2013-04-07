@@ -289,7 +289,7 @@ margin: 20px 10px 0 0;
       }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 480px) {
       .navbar .brand{
       font-size: 2.5 em;
       }
