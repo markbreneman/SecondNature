@@ -43,7 +43,7 @@ margin: 20px 10px 0 0;
  text-shadow:none;
  color:#C1D0CD; 
  font-family: Verlag;
- font-size: 1.25em;
+ font-size: 1.5em;
 }
 
 .navbar .nav>li>a:hover {
@@ -73,8 +73,19 @@ margin: 20px 10px 0 0;
 .carousel .item {
   height: 700px;
 }
+
 .carousel img {
+}
+
+#landingimage{
   position: absolute;
+  width:100%;
+  min-height: 700px;
+}
+#recentphotosimage{
+  position: absolute;
+  width:100%;
+  min-height: 900px;
 }
 
 .carousel-caption {
@@ -100,74 +111,124 @@ margin: 20px 10px 0 0;
 }
 
 #logo{
-      width: 45%;
-      margin-top:20%;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-    }
+  width: 45%;
+  margin-top:20%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
 
-    #ellipses{
-      display:block;
-      position: relative;
-      margin-left: auto;
-      margin-right:auto;
-      margin-top:5%;
-      margin-bottom: 2%;
-      width: 30%;
-    }
+#ellipses{
+  display:block;
+  position: relative;
+  margin-left: auto;
+  margin-right:auto;
+  /*margin-top:3  %;*/
+  margin-bottom: 2%;
+  width: 30%;
+}
 
-    #tagline {
-      font-size: 2.25em; 
-      color:white;
-      font-family: Verlag;
-      font-weight: lighter;
-    }
+#tagline {
+  font-size: 4.5em; 
+  line-height: 1em;
+  color:white;
+  font-family: Verlag;
+  font-weight: lighter;
+}
 
-/* MARKETING CONTENT
-    -------------------------------------------------- */
 
-    /* Center align the text within the three columns below the carousel */
-    .marketing .span4 {
-      text-align: center;
-    }
-    .marketing h2 {
-      font-weight: normal;
-    }
-    .marketing .span4 p {
-      margin-left: 10px;
-      margin-right: 10px;
-    }
+/* Featurettes
+------------------------- */
 
-   /* Featurettes
-    ------------------------- */
+#HowitWorks{
+  background-color: rgb(25,34,37);
+}
 
-    .featurette-divider {
-      margin: 80px 0; /* Space out the Bootstrap <hr> more */
-    }
-    .featurette {
-      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
-      overflow: hidden; /* Vertically center images part 2: clear their floats. */
-    }
-    .featurette-image {
-      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
-    }
+/*#RecentPhotos{
+  background-image: url(/static/img/RecentImagesbackground.jpg);
+}*/
 
-    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
-    .featurette-image.pull-left {
-      margin-right: 40px;
-    }
-    .featurette-image.pull-right {
-      margin-left: 40px;
-    }
+#Signup{
+  background-color: rgb(25,34,37);
+}
 
-    /* Thin out the marketing headings */
-    .featurette-heading {
-      font-size: 50px;
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -1px;
-    }
+
+
+#circle{
+  background-color: white;
+  width: 8px;
+  height: 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; 
+
+  left: 47%;
+  position: relative;
+  margin-bottom: 130%;
+  margin-top: 140%;
+}
+
+.holder{
+float: left;
+margin-left: auto;
+margin-right: auto;  
+}
+
+.thumbnails{
+float: left;
+margin-left: auto;
+margin-right: auto;
+}
+
+.thumbnail{
+  text-align: center;
+  text-transform: uppercase;
+  border:none;
+}
+
+.thumbnails .separator{
+  text-align: center; 
+  margin-left: -2%;
+  margin-right: -4%;
+  border:none;
+  width:100px ;
+}
+
+
+.featurette {
+  padding: 3%; 
+  overflow: hidden;
+  font-family: Gotham;
+  color: white; 
+}
+.featurette-image {
+  margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+}
+
+/* Give some space on the sides of the floated elements so text doesn't run right into it. */
+.featurette-image.pull-left {
+  margin-right: 40px;
+}
+.featurette-image.pull-right {
+  margin-left: 40px;
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-size: 4em  ;
+  font-weight: bold;     
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.featurette h3 {
+  font-size: 2em;
+  font-weight: lighter;     
+}
+
+.featurette .step{
+  font-family: VerlagComp;
+  font-size: 1.15em;
+}
 
 /* RESPONSIVE CSS
     -------------------------------------------------- */
@@ -254,6 +315,12 @@ margin: 20px 10px 0 0;
       margin-top:10%;
       }
 
+
+      #tagline {
+        font-size: 4em; 
+        line-height: 1em;
+      }
+
       .carousel {
         margin-left: -20px;
         margin-right: -20px;
@@ -262,7 +329,7 @@ margin: 20px 10px 0 0;
 
       }
       .carousel .item {
-        height: 500px;
+        height: 400px;
       }
       .carousel img {
         /*height: 300px;*/
@@ -316,5 +383,15 @@ src: url("/static/fonts/VerlagComp-Bold.otf") format("opentype");
 
 @font-face {
 font-family: Gotham;
+src: url("/static/fonts/Gotham-Medium.otf") format("opentype");
+font-weight: bold;
+/*font-style: normal;*/
+}
+
+@font-face {
+font-family: Gotham;
 src: url("/static/fonts/Gotham-Light.otf") format("opentype");
+font-weight: lighter;
+/*font-style: normal;*/
+
 }

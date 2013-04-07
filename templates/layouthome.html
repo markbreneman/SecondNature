@@ -59,7 +59,7 @@
 
                 {% else %}
                 <li><a href="/photostream">Photostream</a></li>
-                <li><a href="/users/{{current_user.username}}">My posts</a></li>
+                <li><a href="/users/{{current_user.username}}"></a>{{ current_user.username}} Photos</li>
                 <li><a href="/admin">Write a new post</a></li>
                 <li><a href="/logout">Logout {{ current_user.username}}</a></li>
                 {% endif %}
