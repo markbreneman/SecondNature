@@ -301,6 +301,14 @@ margin-top: 130%;
         /*height: 500px;*/
       }
 
+      #Home{
+      background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
+      -webkit-background-size:190%;
+      -moz-background-size: 190%;
+      -o-background-size: 190%;
+      background-size: 190%;
+      }
+
 
     }
 
@@ -360,7 +368,7 @@ margin-top: 130%;
       #LandingImage {
       display:none;  
       }
-      
+
     }
     @media (max-width: 321px) {
       .navbar .brand{
