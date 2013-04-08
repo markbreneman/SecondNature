@@ -350,10 +350,10 @@ margin-top: 130%;
 
       #Home{
       background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
-      -webkit-background-size:300%;
-      -moz-background-size: 300%;
-      -o-background-size: 300%;
-      background-size: 300%;
+      -webkit-background-size:170%;
+      -moz-background-size: 170%;
+      -o-background-size: 170%;
+      background-size: 170%;
       }
 
       #RecentPhotosImage {
