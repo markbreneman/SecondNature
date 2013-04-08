@@ -133,18 +133,22 @@ margin: 20px 10px 0 0;
 
 #HowItWorks{
   background-color: rgb(25,34,37);
+  /*padding:2%;*/
 }
-
 
 #SignUp{
   background-color: rgb(25,34,37);
 }
 
+.carousel-inner .container{
+  padding:2%;
+}
 
 .sectionTitle{
 font-family: Gotham;
 font-size: 4em;
 color: white;
+margin-top: 3%;
 }
 
 .copyText{
@@ -200,12 +204,31 @@ margin-top: 130%;
 /* RESPONSIVE CSS
     -------------------------------------------------- */
 
-    @media (max-width: 1300px) {
+    @media (max-width: 1380px) {
       .navbar .nav>li>a {
       padding: 30px 15px;
       text-shadow: none;
       color: #C1D0CD;
       font-family: Verlag;
+      font-size: 1.35em;
+      }
+    }
+   @media (max-width: 1260px) {
+      .navbar .nav>li>a {
+      padding: 30px 10px;
+      text-shadow: none;
+      color: #C1D0CD;
+      font-family: Verlag;
+      font-size: 1.25em;
+      }
+    }
+    @media (max-width: 1200px) {
+      .navbar .nav>li>a {
+      padding: 30px 10px;
+      text-shadow: none;
+      color: #C1D0CD;
+      font-family: Verlag;
+      font-size: 1.15em;
       }
     }
 
@@ -215,13 +238,18 @@ margin-top: 130%;
       text-shadow: none;
       color: #C1D0CD;
       font-family: Verlag;
-      font-size: 1.15em;
+      font-size: 1em;
       }
 
       .navbar .brand{
       font-size: 4.75 em;
       }
     }
+
+    @media (max-width: 1200px) {
+      .separator{display: none;}
+    }
+    
 
     @media (max-width: 1050px) {
        .navbar .nav>li>a {
