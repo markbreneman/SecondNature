@@ -359,10 +359,10 @@ form{
 
         #Home{
       background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
-      -webkit-background-size:105%;
-      -moz-background-size: 105%;
-      -o-background-size: 105%;
-      background-size: 105%;
+      -webkit-background-size:110%;
+      -moz-background-size: 110%;
+      -o-background-size: 110%;
+      background-size: 110%;
       }
       
     }
@@ -433,7 +433,7 @@ form{
       .carousel-caption .btn {
         font-size: 18px;
       }
-      
+
       #Home{
       background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
       -webkit-background-size:190%;
