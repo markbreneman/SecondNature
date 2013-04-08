@@ -353,8 +353,13 @@ margin-top: 130%;
         font-size: 18px;
         line-height: 1.5;
       }
-    }
 
+      #RecentPhotosImage {
+      position: absolute;
+      width: 100%;
+      min-height: 2250px;
+      }
+      }
     @media (max-width: 321px) {
       .navbar .brand{
       font-size: 2.25em;
