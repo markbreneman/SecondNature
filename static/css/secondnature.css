@@ -300,6 +300,9 @@ margin-top: 130%;
       .carousel img {
         /*height: 500px;*/
       }
+       #RecentPhotosImage {
+      display:none;  
+      }
 
     }
 
@@ -356,9 +359,6 @@ margin-top: 130%;
       background-size: 190%;
       }
 
-      #RecentPhotosImage {
-      display:none;  
-      }
     }
     @media (max-width: 321px) {
       .navbar .brand{
