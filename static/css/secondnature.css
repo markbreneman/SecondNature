@@ -301,17 +301,6 @@ margin-top: 130%;
         /*height: 500px;*/
       }
 
-      .featurette {
-        height: auto;
-        padding: 0;
-      }
-      .featurette-image.pull-left,
-      .featurette-image.pull-right {
-        display: block;
-        float: none;
-        max-width: 40%;
-        margin: 0 auto 20px;
-      }
     }
 
      @media (max-width: 767px) {
@@ -359,20 +348,8 @@ margin-top: 130%;
         font-size: 18px;
       }
 
-      .marketing .span4 + .span4 {
-        margin-top: 40px;
-      }
-
-      .featurette-heading {
-        font-size: 30px;
-      }
-      .featurette .lead {
-        font-size: 18px;
-        line-height: 1.5;
-      }
-
       #Home{
-      background: url(/static/img/LandingImageinstant.jpg) no-repeat top left fixed;
+      background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
       -webkit-background-size: 150%;
       -moz-background-size: 150%;
       -o-background-size: 150%;
