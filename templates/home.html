@@ -2,116 +2,107 @@
 
 {% block body %}
  
-    <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide">
+    <!-- Home -->
+    <!-- ================================================== -->
+    <div id="Home" class="carousel slide">
       <div class="carousel-inner">
         <div class="item active">
-          <img id="landingimage" src="../static/img/LandingImageinstant.png" alt="">
+          <img id="LandingImage" src="../static/img/LandingImageinstant.png" alt="">
           <div class="container">
             <div class="logoCaption">
-            <img id="logo" src="../static/img/Logo.png">
-            <img id="ellipses" src="../static/img/ellipses.png">
-            <h1 id="tagline">Smart Phones for Science</h1>
+            <img id="Logo" src="../static/img/Logo.png">
+            <img id="Ellipses" src="../static/img/ellipses.png">
+            <h1 id="Tagline">Smart Phones for Science</h1>
           </div><!-- /.logoCaption -->
           </div><!-- /.container -->
         </div><!-- /.item active -->
       </div><!-- /.carousel-inner-->
     </div><!-- /.carousel -->
 
-      <!-- START THE FEATURETTES -->
-      <!-- HowItWorks -->
-      <div class="featurette" id="HowitWorks">
-        <h2 class="featurette-heading">How it Works</h2> 
-        <img class="" src="../static/img/ArrowRight.png">
-        <h3 class="">The Second Nature Project transforms donated smartphones into wildlife cameras.</h3>
-        <div class="row holder">
-        <ul class="thumbnails">
-          <li class="span3">
-            <div class="thumbnail">
-              <img src="../static/img/Signup.png" >
-              <h3 class="step">Signup</h3>
-              <!-- <p>Thumbnail caption...</p> -->
-            </div>
-          </li>
+    <!-- RecentPhotos -->
+    <!-- ================================================== -->
+      <div id="HowItWorks" class="carousel slide">
+      <div class="carousel-inner">
+          <div class="container">
+            <div class="row">
 
+              <h2 class="sectionTitle">How It Works</h2> 
+              <img src="../static/img/ArrowRight.png">
 
-           <li class="separator">
-              <div id="circle"></div>  
-              <img class="" src="../static/img/HorizontalLine.png">
-          </li>
-            
+              <h3 class="copyText">The Second Nature Project transforms donated smartphones into wildlife cameras.</h3>
+
+              <div class="span3 step">
+                <img src="../static/img/Signup.png">
+                <h2 class="stepCaption">Signup</h2>
+              </div><!-- /.span4 -->
           
-          <li class="span3">
-            <div class="thumbnail">
-              <img src="../static/img/Sendoff.png" >
-              <h3 class="step">Sendoff</h3>
-              <!-- <p>Thumbnail caption...</p> -->
-            </div>
-          </li>
-
-
-           <li class="separator">
-              <div id="circle"></div>  
+              <div class="separator">
+              <div class="circle"></div>  
               <img class="" src="../static/img/HorizontalLine.png">
-          </li>
+              </div>
 
-           <li class="span3">
-            <div class="thumbnail">
-              <img src="../static/img/Deploy.png" >
-              <h3 class="step">Deploy</h3>
-              <!-- <p>Thumbnail caption...</p> -->
-            </div>
-          </li>
+              <div class="span3 step">
+                <img src="../static/img/Sendoff.png">
+                <h2 class="stepCaption">Sendoff</h2>
+              </div><!-- /.span4 -->
 
-           <li class="separator">
-              <div id="circle"></div>  
+              <div class="separator">
+              <div class="circle"></div>  
               <img class="" src="../static/img/HorizontalLine.png">
-          </li>
+              </div>
 
-           <li class="span3">
-            <div class="thumbnail">
-              <img src="../static/img/Notify.png" >
-              <h3 class="step">Notify</h3>
-              <!-- <p>Thumbnail caption...</p> -->
-            </div>
-          </li>
-        </ul>
-      </div>
-    
-        <p class="lead">Consumers can signup and donate their phones to be deployed into the wild under the supervision of wildlife researchers. When phone takes a picture it notifies the user letting them see how their donation is working.</p>
-      </div>
+              <div class="span3 step">
+                <img src="../static/img/Deploy.png">
+                <h2 class="stepCaption">Deploy</h2> 
+              </div><!-- /.span4 -->
+
+              <div class="separator">
+              <div class="circle"></div>  
+              <img class="" src="../static/img/HorizontalLine.png">
+              </div>
+
+              <div class="span3 step">
+                <img src="../static/img/Notify.png">
+                <h2 class="stepCaption">Notify</h2> 
+              </div><!-- /.span4 -->
+            
+            <h3 class="copyText">Consumers can signup and donate their phones to be deployed into the wild under the supervision of wildlife researchers. When phone takes a picture it notifies the user letting them see how their donation is working.</h3>
+            
+            </div><!-- /.row -->
+     
+          </div><!-- /.container -->
 
       <!-- RecentPhotos -->
 
       <div id="RecentPhotos" class="carousel slide">
       <div class="carousel-inner">
-          <img id="recentphotosimage" src="../static/img/RecentImagesbackground.jpg" alt="">
+          <img id="RecentPhotosImage" src="../static/img/RecentImagesBackground.jpg" alt="">
           <div class="container">
             <div class="row">
 
-              <h2 class="">RecentPhotos</h2> 
+              <h2 class="sectionTitle">Recent Photos</h2> 
               <img class="" src="../static/img/ArrowLeft.png">
 
-              <h3 class="">Below are a just a few of the most recent photos from the wild.  By donating to the Second Nature Project you can help document and identify some of the worlds rarest and threatened species, helping conservationist and researchers.</h3>
+              <h3 class="copyText">Below are a just a few of the most recent photos from the wild.  By donating to the Second Nature Project you can help document and identify some of the worlds rarest and threatened species, helping conservationist and researchers.</h3>
 
-              <div class="span4">
+              <div class="span4 tile">
                 <img src="../static/img/Tiger.jpg">
                 <h2>Amur Tiger, Siberia</h2>
               </div><!-- /.span4 -->
 
-              <div class="span4">
+              <div class="span4 tile">
                 <img src="../static/img/TreeShrew.jpg">
                 <h2>Tree Shrew, Indonesia</h2>
               </div><!-- /.span4 -->
 
-              <div class="span4">
+              <div class="span4 tile">
                 <img src="../static/img/CrownedGuenonMonkey.jpg">
                 <h2>Crowned Guenon Monkey, Congo</h2> 
               </div><!-- /.span4 -->
 
-            </div><!-- /.row -->
-            <p class="lead">By donating to the Second Nature Project you can help document and identify some of the worlds rarest and threatened species, helping conservationist and researchers.</p>
+           <h3 class="copyText">By donating to the Second Nature Project you can help document and identify some of the worlds rarest and threatened species, helping conservationist and researchers.</h3>
+            
+            </div><!-- /.row -->  
           </div><!-- /.container -->
 
   
