@@ -16,11 +16,19 @@ body{
     border: 0;
     background-color:rgba(35, 31, 32, 0.7);
     background-image:none;
+    border-radius:0px; 
   }
+
+
+.brand{
+  font-family: CycloneInline;
+  font-size: 5em;
+  color:#C1D0CD;
+  font-weight: lighter;
+}
 
 /* Downsize the brand/project name a bit */
 .navbar .brand{
-  font-family: CycloneInline;
   font-size: 5em;
   padding: 20px 20px 5px; /* Increase vertical padding to match navbar links */
   line-height:1em;
@@ -53,7 +61,44 @@ margin: 20px 10px 0 0;
 }
 
 .navbar{
-  color:none;
+  margin-bottom: 0px;
+
+}
+
+.dropdown-menu {
+background-color:rgba(35, 31, 32, 0.7);
+border-top-left-radius:0px;
+border-top-right-radius:0px;
+border-bottom-left-radius:5px;
+border-bottom-right-radius:5px;
+min-width: 153px;
+}
+.dropdown-menu>li>a {
+  color:#b4c6c3;
+  font-family: Gotham;
+}
+.navbar .nav>li>.dropdown-menu:after{
+border-bottom: 6px solid rgba(35, 31, 32, 0.7);
+}
+
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a{
+color: #ffffff;
+text-decoration: none;
+background-color: #031214;
+/*background-image: -moz-linear-gradient(top,#333936,#333936);*/
+/*background-image: -webkit-gradient(linear,0 0,0 100%,from(#333936),to(#333936));*/
+/*background-image: -webkit-linear-gradient(top,#333936,#333936);*/
+/*background-image: -o-linear-gradient(top,#333936,#333936);*/
+background-image: linear-gradient(to bottom,#031214,#031214);
+background-repeat: repeat-x;
+}
+
+.navbar .nav li.dropdown.open>.dropdown-toggle, .navbar .nav li.dropdown.active>.dropdown-toggle, .navbar .nav li.dropdown.open.active>.dropdown-toggle {
+color: #ffffff;
+background-color: #031214;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
 }
 
 .carousel {
@@ -198,6 +243,7 @@ margin-bottom: 150%;
 margin-top: 130%;
 }
 
+
 #RecentPhotos{
       background: url(/static/img/RecentImagesbackground.jpg) no-repeat center center fixed; 
       -webkit-background-size: cover;
@@ -214,10 +260,40 @@ margin-top: 130%;
       background-size: cover;
 }
 
+.smallerLogo{
+  max-width: 125px;
+  margin-top: -10px;
+}
 
+.well{
+  border:none;
+  background-color:transparent;
+}
 
+label{
+font-family: Gotham;
+font-size: 1.15em;
+color: white; 
+}
 
+input{
+font-family: Gotham;
+font-size: 1.15em;
+/*color: white; */
+}
 
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+border-color: rgba(218, 196, 108, 0.8);
+outline: 0;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
+-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
+box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
+}
+
+form{
+  margin-left: -20px; 
+
+}
 /* RESPONSIVE CSS
     -------------------------------------------------- */
 
@@ -283,10 +359,10 @@ margin-top: 130%;
 
         #Home{
       background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
-      -webkit-background-size:190%;
-      -moz-background-size: 190%;
-      -o-background-size: 190%;
-      background-size: 190%;
+      -webkit-background-size:105%;
+      -moz-background-size: 105%;
+      -o-background-size: 105%;
+      background-size: 105%;
       }
       
     }
@@ -357,7 +433,7 @@ margin-top: 130%;
       .carousel-caption .btn {
         font-size: 18px;
       }
-
+      
       #Home{
       background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
       -webkit-background-size:190%;
@@ -374,6 +450,14 @@ margin-top: 130%;
     @media (max-width: 321px) {
       .navbar .brand{
       font-size: 2.25em;
+      }
+
+      #Home{
+      background: url(/static/img/Landingimageinstant.jpg) no-repeat top left fixed;
+      -webkit-background-size:190%;
+      -moz-background-size: 190%;
+      -o-background-size: 190%;
+      background-size: 190%;
       }
     }
 

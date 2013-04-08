@@ -65,13 +65,19 @@ login_manager.setup_app(app)
 def index():
 	# get requested user's content
 	user_content = models.Content.objects
+	
+	# prepare registration form		
+	registerForm = models.SignupForm(request.form)
+	app.logger.info(request.form)
 
 	# prepare the template data dictionary
 	templateData = {
 		'current_user' : current_user,
 		'user_content'  : user_content,
+		'form' : registerForm,
 		'users' : models.User.objects()
 	}
+	
 	
 	app.logger.debug(current_user)
 
@@ -328,5 +334,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-# app.run(host='127.0.0.1', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)

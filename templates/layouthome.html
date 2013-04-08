@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>The Second Nature Project</title>
+    <title>Second Nature Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" 
+      type="image/png" 
+      href="../static/favicon.ico">
+
+    <title>The Second Nature Project - </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}{% endblock %}
 
@@ -17,7 +23,8 @@
     <link href="{{ url_for('static', filename='css/secondnature.css') }}" rel="stylesheet">
 
     {% block styles %}{% endblock %}
-     
+    
+    
   </head>
 
   <body>
@@ -43,23 +50,21 @@
                 {% if current_user.is_anonymous() %}
                 <li><a href="/#HowItWorks">How it Works</a></li>
                 <li><a href="/#RecentPhotos">Recent Photos</a></li>
-                <!-- <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li> -->
                 
-                <li class="dropdown">
+               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login/Register <b class="caret"></b></a>
                   <ul class="dropdown-menu pull-right">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/#SignUp">Register</a></li>
                   </ul>
                 </li>
-                
+
                 <li><a href="/requirements">Requirements</a></li>
                 <li><a href="/contact">Contact</a></li>
 
                 {% else %}
                 <li><a href="/photostream">Photostream</a></li>
-                <li><a href="/users/{{current_user.username}}"></a>{{ current_user.username}} Photos</li>
+                <li><a href="/users/{{current_user.username}}">{{ current_user.username}}'s Photos</a></li>
                 <li><a href="/admin">Write a new post</a></li>
                 <li><a href="/logout">Logout {{ current_user.username}}</a></li>
                 {% endif %}

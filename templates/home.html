@@ -100,8 +100,61 @@
             
             </div><!-- /.row -->  
           </div><!-- /.container -->
-      
-      <!-- /END THE FEATURETTES -->
+      </div>
+    </div>
+
+    <div id="SignUp" class="carousel slide scroll">
+        <div class="carousel-inner">
+            <div class="container">
+              <div class="row">
+                <h3 class="brand pull-left">The Second Nature Project</h3>
+                
+                <img class="smallerLogo pull-right" src="../static/img/logo.png">
+              </div>
+              <div class="row">
+
+                <h3 class="copyText span6">To participate in The Second Nature Project begin by creating an account to the right.  After your account is created you will have access to the all the current photos being taken and walked through the donation process. </h3>
+   
+                <div class="span4 offset1">
+                    <h1 class="sectionTitle">Sign Up</h1>
+                    
+                    {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                      {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+                          <li class="alert">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endwith %}
+
+                    {% if form.errors %}
+                    <ul class="errors">
+                        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                            {% for error in field_errors %}
+                                <li class="alert">{{ form[field_name].label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+
+                    <div class="well">
+                        <form action="/register" method="POST">
+                            {{ form.csrf_token }}
+                            {{ form.username.label }} {{ form.username }}
+                            {{ form.email.label }} {{ form.email }}
+                            {{ form.password.label }} {{ form.password }}
+                            {{ form.confirm.label }} {{ form.confirm }}
+                            <br>
+                            <input type="submit" value="Go"> <small style="color:white;">(all fields required)</small>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div><!-- /.container -->
+         </div>   
+      </div>
 
 
 
