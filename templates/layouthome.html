@@ -92,16 +92,15 @@
    <script src="{{ url_for('static', filename='js/bootstrap-dropdown.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap-scrollspy.js') }}"></script>
     
-    
+    <script src="{{ url_for('static', filename='js/jquery.smoothscroll.min.js') }}"></script>
+
     <script>
-    jQuery(document).ready(function($) {
-    $(".scroll").click(function(event){   
-      event.preventDefault();
-      $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
-      });
-    });
-    </script>
-    
+   $(function() {
+    $('html').smoothScroll(500);
+   });
+  </script>
+
+
     {% block scripts %}{% endblock %}
 
   </body>
