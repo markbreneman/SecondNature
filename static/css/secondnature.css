@@ -198,6 +198,23 @@ margin-bottom: 150%;
 margin-top: 130%;
 }
 
+#RecentPhotos{
+      background: url(/static/img/RecentImagesbackground.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+#Home{
+      background: url(/static/img/LandingImageinstant.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+
 
 
 
@@ -354,12 +371,18 @@ margin-top: 130%;
         line-height: 1.5;
       }
 
+      #Home{
+      background: url(/static/img/LandingImageinstant.jpg) no-repeat top left fixed;
+      -webkit-background-size: 150%;
+      -moz-background-size: 150%;
+      -o-background-size: 150%;
+      background-size: 150%;
+      }
+
       #RecentPhotosImage {
-      position: absolute;
-      width: 100%;
-      min-height: 2250px;
+      display:none;  
       }
-      }
+    }
     @media (max-width: 321px) {
       .navbar .brand{
       font-size: 2.25em;
