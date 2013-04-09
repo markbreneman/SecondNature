@@ -25,6 +25,7 @@ body{
   font-size: 5em;
   color:#C1D0CD;
   font-weight: lighter;
+  line-height: 1;
 }
 
 /* Downsize the brand/project name a bit */
@@ -37,12 +38,16 @@ body{
 }
 
 .navbar .nav {
-margin: 20px 10px 0 0;
+/*margin: 20px 10px 0 0;*/
   }
 
 /* Navbar links: increase padding for taller navbar */
 .navbar .nav>li>a{
- padding: 30px 30px;
+ 
+ padding-top: 2.45em;
+ padding-right: 30px;
+ padding-bottom: 30px;
+
  text-shadow:none;
  color:#C1D0CD; 
  font-family: Verlag;
@@ -52,7 +57,6 @@ margin: 20px 10px 0 0;
 .navbar .nav>li>a:hover {
  text-shadow:none;
  color:white;  
-/*margin-top: 2.75em;*/
 }
 
 /* Offset the responsive button for proper vertical alignment */
@@ -71,7 +75,10 @@ border-top-left-radius:0px;
 border-top-right-radius:0px;
 border-bottom-left-radius:5px;
 border-bottom-right-radius:5px;
-min-width: 153px;
+min-width: 99%;
+text-align: center;
+background-clip: border-box;
+margin: 0;
 }
 .dropdown-menu>li>a {
   color:#b4c6c3;
@@ -112,6 +119,11 @@ border-top-right-radius: 5px;
 
 .carousel .item {
   height: 700px;
+}
+
+.carousel-inner .container{
+  padding:2%;
+  margin-bottom: 2%;
 }
 
 /*.carousel img {
@@ -176,17 +188,9 @@ border-top-right-radius: 5px;
   font-weight: lighter;
 }
 
-#HowItWorks{
+#HowItWorks,#SignUp,#Welcome{
   background-color: rgb(25,34,37);
   /*padding:2%;*/
-}
-
-#SignUp{
-  background-color: rgb(25,34,37);
-}
-
-.carousel-inner .container{
-  padding:2%;
 }
 
 .sectionTitle{
@@ -194,6 +198,7 @@ font-family: Gotham;
 font-size: 4em;
 color: white;
 margin-top: 3%;
+line-height: 1;
 }
 
 .copyText{
@@ -294,6 +299,17 @@ form{
   margin-left: -20px; 
 
 }
+
+#Welcome{
+  padding-top: 5%;
+  min-height: 1000px;/* this may not be necessary*/
+}
+
+#Welcome .copyText{
+  font-size: 1.25em;
+  margin-bottom:3%;
+}
+
 /* RESPONSIVE CSS
     -------------------------------------------------- */
 
@@ -304,6 +320,7 @@ form{
       color: #C1D0CD;
       font-family: Verlag;
       font-size: 1.35em;
+      padding-top: 2.75em;
       }
     }
    @media (max-width: 1260px) {
@@ -313,6 +330,7 @@ form{
       color: #C1D0CD;
       font-family: Verlag;
       font-size: 1.25em;
+      padding-top: 3em;
       }
     }
     @media (max-width: 1200px) {
@@ -322,7 +340,9 @@ form{
       color: #C1D0CD;
       font-family: Verlag;
       font-size: 1.15em;
+      padding-top: 3.25em;
       }
+      .separator{display: none;}
     }
 
     @media (max-width: 1150px) {
@@ -332,17 +352,13 @@ form{
       color: #C1D0CD;
       font-family: Verlag;
       font-size: 1em;
+      padding-top: 3.75em;
       }
 
       .navbar .brand{
       font-size: 4.75 em;
       }
     }
-
-    @media (max-width: 1200px) {
-      .separator{display: none;}
-    }
-    
 
     @media (max-width: 1050px) {
        .navbar .nav>li>a {
@@ -351,6 +367,7 @@ form{
       color: #C1D0CD;
       font-family: Verlag;
       font-size: 1.15em;
+      padding-top: 2.75em;
       }
 
       .navbar .brand{
@@ -413,7 +430,7 @@ form{
         margin-right: -20px;
       }
       .carousel .container {
-
+        padding: 10%;
       }
       .carousel .item {
         height: 400px;
@@ -442,14 +459,22 @@ form{
       background-size: 190%;
       }
 
-      #LandingImage {
-      display:none;  
+        .brand{
+        text-align: center;
+      }
+
+      .copyText{
+        font-size: 1.25em;
       }
 
     }
     @media (max-width: 321px) {
       .navbar .brand{
       font-size: 2.25em;
+      }
+
+      .brand{
+        text-align: center;
       }
 
       #Home{

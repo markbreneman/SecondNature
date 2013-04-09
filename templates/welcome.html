@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block body %}
+      <div id="Welcome" class="carousel slide scroll">
+      <div class="carousel-inner">
+          <div class="container">
+            <div class="row">
+
+              <h1 class="sectionTitle">Welcome {{ current_user.username}},</h1> 
+            
+              <h3 class="copyText">Thank you so much for your interest and participation in Second Nature Project. You now have access to all the photos currently being captured by our transformed smartphones, through the <a href="/photostream">PhotoStream</a> in the Navigation above.</h3>
+
+              <h3 class="copyText">While we encourage you to explore the PhotoStream, and help identify some of the worlds rarest species, our service also relies your donations. If you have a smartphone that you would like to donate please review our <a href="/requirements">requirements</a>, and fill out the following form below.</h3>
+
+              <div class="span4 offset9">
+                    <h1 class="sectionTitle">Sign Up</h1>
+                    
+                    {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                      {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+                          <li class="alert">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endwith %}
+
+                    {% if form.errors %}
+                    <ul class="errors">
+                        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                            {% for error in field_errors %}
+                                <li class="alert">{{ form[field_name].label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <div class="well">
+                        <form action="/register" method="POST">
+                            {{ form.csrf_token }}
+                            {{ form.username.label }} {{ form.username }}
+                            {{ form.email.label }} {{ form.email }}
+                            {{ form.password.label }} {{ form.password }}
+                            {{ form.confirm.label }} {{ form.confirm }}
+                            <br>
+                            <input type="submit" value="Go"> <small style="color:white;">(all fields required)</small>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+       </div>   
+    </div>
+
+{% endblock %}

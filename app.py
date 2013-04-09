@@ -138,7 +138,8 @@ def register():
 			user.save()	
 			if login_user(user, remember="no"):
 				flash("Logged in!")
-				return redirect(request.args.get("next") or '/')
+				#JOHN SCHIMMEL: Wwhat does the request.args.get do?
+				return redirect(request.args.get("next") or '/welcome')
 			else:
 				flash("unable to log you in")
 
@@ -322,6 +323,26 @@ def requirements():
 def contact():
     return render_template('contact.html')
 
+@app.route("/welcome", methods=["GET"])
+def welcome():
+
+	# get requested user's content
+	user_content = models.Content.objects
+	
+	# prepare registration form		
+	registerForm = models.SignupForm(request.form)
+	app.logger.info(request.form)
+	
+	# prepare the template data dictionary
+	templateData = {
+		'current_user' : current_user,
+		'user_content'  : user_content,
+		'form' : registerForm,
+		'users' : models.User.objects()
+	}
+
+	return render_template('welcome.html', **templateData)
+
 
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
     return value.strftime(format)
@@ -334,5 +355,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-# app.run(host='127.0.0.1', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)
