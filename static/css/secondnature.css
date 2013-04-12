@@ -108,6 +108,10 @@ border-top-left-radius: 5px;
 border-top-right-radius: 5px;
 }
 
+.navbar .pull-right>li>.dropdown-menu, .navbar .nav>li>.dropdown-menu.pull-right {
+  right:auto;
+}
+
 .carousel {
   margin-bottom: 0px;
 }
@@ -188,7 +192,7 @@ border-top-right-radius: 5px;
   font-weight: lighter;
 }
 
-#HowItWorks,#SignUp,#Welcome{
+#HowItWorks,#SignUp,#Welcome,#Error, #Requirements, #Contact{
   background-color: rgb(25,34,37);
   /*padding:2%;*/
 }
@@ -273,6 +277,7 @@ margin-top: 130%;
 .well{
   border:none;
   background-color:transparent;
+  color:white;
 }
 
 label{
@@ -295,12 +300,11 @@ outline: 0;
 box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
 }
 
-form{
+#SignUp form{
   margin-left: -20px; 
-
 }
 
-#Welcome{
+#Welcome, #Error, #Requirements, #Contact{
   padding-top: 5%;
   min-height: 1000px;/* this may not be necessary*/
 }
@@ -309,6 +313,24 @@ form{
   font-size: 1.25em;
   margin-bottom:3%;
 }
+
+.errorSuggest{
+  color:white;
+}
+
+/*#Requirements{
+  background: url("/static/img/requirements1.jpg") no-repeat top left fixed;
+      -webkit-background-size:100%;
+      -moz-background-size: 100%;
+      -o-background-size: 100%;
+      background-size: 100%;
+}*/
+
+#Requirements img{ width:100%;}
+#Requirements .condition{
+  text-align: justify;  
+}
+
 
 /* RESPONSIVE CSS
     -------------------------------------------------- */

@@ -1,11 +1,15 @@
 # -*- encoding: utf-8 -*-
-import os,sys
-import re
-import datetime
+import os,sys,re,datetime
+# import re
+# import datetime
 
 from flask import Flask, session, request, url_for, escape, render_template, json, jsonify, flash, redirect, abort
+from werkzeug import secure_filename
+from unidecode import unidecode
+
+#import all of mongoengine
 from flask.ext.mongoengine import mongoengine
-import models
+
 
 # Flask-Login 
 from flask.ext.login import (LoginManager, current_user, login_required,
@@ -18,7 +22,18 @@ from flaskext.bcrypt import Bcrypt
 #custom user library - maps User object to User model
 from libs.user import *
 
-app = Flask(__name__)
+#import data models
+import models
+
+#import boto - for AWS connection
+import boto
+
+#Python Image Library
+import StringIO
+
+
+#___________CONFIG_____________#
+app = Flask(__name__) #Create the Flask App
 app.debug = True
 app.secret_key = os.environ.get('SECRET_KEY') # SECRET_KEY=...... inside .env
 
@@ -31,6 +46,7 @@ flask_bcrypt = Bcrypt(app)
 # 	using a local mongodb put this in .env
 #   MONGOLAB_URI=mongodb://localhost:27017/secondnatureproject
 mongoengine.connect('userdemo', host=os.environ.get('MONGOLAB_URI'))
+app.logger.debug("Connecting to MongoLabs")
 
 # Login management defined
 # reference http://packages.python.org/Flask-Login/#configuring-your-application
@@ -59,6 +75,9 @@ def load_user(id):
 # connect the login manager to the main Flask app
 login_manager.setup_app(app)
 
+# Amazon S3 file extensions
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
 
 # main route - display recent posts by all users
 @app.route('/')
@@ -68,13 +87,18 @@ def index():
 	
 	# prepare registration form		
 	registerForm = models.SignupForm(request.form)
+
 	app.logger.info(request.form)
+
+	# prepare login form
+	loginForm = models.LoginForm(request.form)
 
 	# prepare the template data dictionary
 	templateData = {
 		'current_user' : current_user,
 		'user_content'  : user_content,
 		'form' : registerForm,
+		'login' :loginForm,
 		'users' : models.User.objects()
 	}
 	
@@ -169,7 +193,7 @@ def register():
 	return render_template("/auth/register.html", **templateData)
 
 	
-# Login route - will display login form and receive POST to authenicate a user
+# Login route - will display login form and receive POST to authenticate a user
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
@@ -189,14 +213,14 @@ def login():
 
 			if login_user(user, remember=remember):
 				flash("Logged in!")
-				return redirect(request.args.get("next") or '/admin')
+				return redirect(request.args.get("next") or '/photostream')
 			else:
 
 				flash("unable to log you in","login")
 	
 		else:
 			flash("Incorrect email and password submission","login")
-			return redirect("/login")
+			return redirect("/home")
 
 	else:
 
@@ -316,12 +340,27 @@ def logout():
 
 @app.route("/requirements", methods=["GET"])
 def requirements():
-	return render_template('requirements.html')
+
+	# prepare login form
+	loginForm = models.LoginForm(request.form)
+
+	templateData = {
+		'form' :loginForm,
+	}
+
+	return render_template('requirements.html', **templateData)
 	
 
 @app.route("/contact", methods=["GET"])
 def contact():
-    return render_template('contact.html')
+
+	# prepare login form
+	loginForm = models.LoginForm(request.form)
+
+	templateData = {
+		'form' :loginForm,
+	}
+	return render_template('contact.html', **templateData)
 
 @app.route("/welcome", methods=["GET"])
 def welcome():
@@ -350,10 +389,16 @@ def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('page_not_found.html'), 404
+		# prepare login form
+	loginForm = models.LoginForm(request.form)
+
+	templateData = {
+		'form' :loginForm,
+	}
+	return render_template('page_not_found.html', **templateData), 404
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    # app.run(host='0.0.0.0', port=port)
-app.run(host='127.0.0.1', port=port)
+    app.run(host='0.0.0.0', port=port)
+# app.run(host='127.0.0.1', port=port)

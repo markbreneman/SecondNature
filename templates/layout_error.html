@@ -30,14 +30,14 @@
   <body>
     
 
-<!-- Navbar
+  <!-- Navbar
     ================================================== -->
        
-   <div class="navbar-wrapper">
+  <div class="navbar-wrapper">
         <div class="navbar">
           <div class="navbar-inner">
              
-             <a class="brand" href="#">The Second Nature Project</a>
+             <a class="brand" href="/">The Second Nature Project</a>
 
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
@@ -52,13 +52,22 @@
                 <li><a href="/#RecentPhotos">Recent Photos</a></li>
                 <li><a href="/#SignUp">Register</a></li>
                 
-                <li class="dropdown">
+               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
                   <ul class="dropdown-menu pull-right">
-                    <li><a href="/Login">Login</a></li>
+                    <!-- <li><a href="/login">Login</a></li> -->
+                    <form class="well" method="post" action="/login">
+                    {{ form.email.label }} {{ form.email(type="email") }}
+                    {{ form.password.label }} {{ form.password }}<br>
+                    <input type="checkbox" name="remember" value="yes"> Remember me
+                    <br><br>
+                    <input type="submit" value="Login">
+                    </form>
+
+
                   </ul>
                 </li>
-                
+
                 <li><a href="/requirements">Requirements</a></li>
                 <li><a href="/contact">Contact</a></li>
 
@@ -66,7 +75,7 @@
                 <li><a href="/photostream">Photostream</a></li>
                 <li><a href="/users/{{current_user.username}}">{{ current_user.username}}'s Photos</a></li>
                 <li><a href="/admin">Write a new post</a></li>
-                <li><a href="/logout">Logout {{ current_user.username}}</a></li>
+                <li><a href="/logout">Logout</a></li>
                 {% endif %}
 
               </ul><!--/.nav-->
@@ -75,33 +84,9 @@
         </div><!-- /.navbar -->
     </div><!-- /.navbar-wrapper -->
 
-
-  <div class="container">
-
-
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        
-      <div class="row">
-        <div class="column span12">
-          <ul class=flashes>
-          {% for message in messages %}
-            <li>{{ message|safe }}</li>
-          {% endfor %}
-          </ul>
-      </div>
-      </div>
-      {% endif %}
-    {% endwith %}
-    
-    <br><br>
-
     <section id="mainbody">
     {% block body %}{% endblock %}
     </section>
-
-    
-  </div><!-- /container -->
 
 
     <!-- Le javascript

@@ -4,20 +4,36 @@
 
 {% block body %}
 
-<div class="row">
-	
-	<div class="span8">
-		<div class="page-header">
-			<h2>Woah, we can't find that page!</h2>
-		</div>
-		
-		
+  <div id="Error" class="carousel slide scroll">
+      <div class="carousel-inner">
+          <div class="container">
+            <div class="row">
 
-	</div>
+              <h1 class="sectionTitle">Well this is unfortunate....</h1> 
+            
+              <h3 class="copyText"> We can't seem to find the webpage you were looking for. Sorry about that!</h3>
+            <h4 class="errorSuggest">Maybe try;
+	            <ul>
+	                <li>checking the address you enter or link you clicked</li>
+	                <li>or sending us an email about the issue.</li>
+	            </ul>
+	        </h4>
 
+            {% with messages = get_flashed_messages(category_filter=["register"]) %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  <li class="alert">{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            </div>
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+       </div>   
+    </div>
 
-	
-</div>
 {% endblock %}
 
 {% block scripts %}
