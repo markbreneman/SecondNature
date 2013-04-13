@@ -10,6 +10,13 @@
           
               <h3 class="copyText">Below are all the Research Projects currently involved with The Second Nature Project.</h3>
 
+              {% for photo in photolist %}
+              <a href="https://s3.amazonaws.com/secondnatureproject/{{photo}}">
+              <img src="https://s3.amazonaws.com/secondnatureproject/{{photo}}" class="img-polaroid">
+              </a>
+        <br>
+              {% endfor %}
+
             </div><!-- /.row -->
           </div><!-- /.container -->
        </div>   

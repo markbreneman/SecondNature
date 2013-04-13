@@ -80,7 +80,6 @@ login_manager.setup_app(app)
 # Amazon S3 file extensions
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
-
 # main route - display recent posts by all users
 @app.route('/')
 def index():
@@ -415,27 +414,48 @@ def photostream():
 	# get requested user's content
 	user_content = models.Content.objects
 
+	#Connecting to S3
 	s3conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
 	app.logger.debug("Connecting to AWS")
 	bucket = s3conn.get_bucket(os.environ.get('AWS_BUCKET')) # bucket name defined in .env
-	# bucketList = bucket.list(PREFIX)
-	# orderedList = sorted(bucketList, key=lambda k: k.last_modified)
 
-	# print orderedList
-
-	for key in bucket.list():
-	    print key.name.encode('utf-8')
-	    print key.last_modified
-
+	#Variable for Bucket Parsing
+	photolist = []
+	splitFileName = []
+	uuidlist = []
 	
+	#List all my file in the bucket and create a photoList
+	for key in bucket.list():
+	    photolist.append(key.name.encode('utf-8'))
+	    key.set_acl('public-read-write')
+
+	#Parse the PhotoList
+	for photo in photolist:
+		#Split the string
+	    splitFileName = photo.split("_",1)
+	    #splitfilename[0] is uuid
+	    uuidlist.append(splitFileName[0])
+	    #splitfilename[1] is timestamp
+	    timestamp=splitFileName[1].split(".",1)[0]
+	    
+	    #unique UUID
+	    projectlist = list(set(uuidlist))
+	    
+	app.logger.debug(projectlist)
+	   
 	# prepare the template data dictionary
 	templateData = {
 		'current_user' : current_user,
 		'user_content'  : user_content,		
-		'users' : models.User.objects()
+		'users' : models.User.objects(),
+		'photolist':photolist,
+		'projectlist': projectlist
+
 	}
 	
 	return render_template('photostream.html', **templateData)
+
+
 
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
     return value.strftime(format)
