@@ -5,7 +5,9 @@ import os,sys,re,datetime
 
 from flask import Flask, session, request, url_for, escape, render_template, json, jsonify, flash, redirect, abort
 from werkzeug import secure_filename
-from unidecode import unidecode
+# from unidecode import unidecode #unidecode is a slug helper module to create page slugs
+from boto.s3.connection import S3Connection
+from boto.s3.key import Key
 
 #import all of mongoengine
 from flask.ext.mongoengine import mongoengine
@@ -31,11 +33,11 @@ import boto
 #Python Image Library
 import StringIO
 
-
 #___________CONFIG_____________#
 app = Flask(__name__) #Create the Flask App
 app.debug = True
 app.secret_key = os.environ.get('SECRET_KEY') # SECRET_KEY=...... inside .env
+# app.config['TRAP_BAD_REQUEST_ERRORS'] = True
 
 # Flask BCrypt will be used to salt the user password
 flask_bcrypt = Bcrypt(app)
@@ -150,12 +152,17 @@ def register():
 	if request.method == 'POST' and registerForm.validate():
 		email = request.form['email']
 		username = request.form['username']
+		# address = request.form['address']
+		# address2 = request.form['address2']
+		# zipcode = request.form['zipcode']
+		# state = request.form['state']
 
 		# generate password hash
 		password_hash = flask_bcrypt.generate_password_hash(request.form['password'])
 		
 		# prepare User
 		user = User(username=username, email=email, password=password_hash)
+		# user = User(username=username, email=email, password=password_hash, address=address, address2=address2, zipcode=zipcode, state=state)
 		
 		# save new user, but there might be exceptions (uniqueness of email and/or username)
 		try:
@@ -369,19 +376,66 @@ def welcome():
 	user_content = models.Content.objects
 	
 	# prepare registration form		
-	registerForm = models.SignupForm(request.form)
+	donateForm = models.DonateForm(request.form)
 	app.logger.info(request.form)
 	
 	# prepare the template data dictionary
 	templateData = {
 		'current_user' : current_user,
 		'user_content'  : user_content,
-		'form' : registerForm,
+		'form' : donateForm,
 		'users' : models.User.objects()
 	}
-
+	
 	return render_template('welcome.html', **templateData)
 
+@app.route("/donate", methods=["GET"])
+def donate():
+
+	# get requested user's content
+	user_content = models.Content.objects
+	
+	# prepare registration form		
+	donateForm = models.DonateForm(request.form)
+	app.logger.info(request.form)
+	
+	# prepare the template data dictionary
+	templateData = {
+		'current_user' : current_user,
+		'user_content'  : user_content,
+		'form' : donateForm,
+		'users' : models.User.objects()
+	}
+	
+	return render_template('donate.html', **templateData)
+
+@app.route("/photostream", methods=["GET"])
+def photostream():
+
+	# get requested user's content
+	user_content = models.Content.objects
+
+	s3conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
+	app.logger.debug("Connecting to AWS")
+	bucket = s3conn.get_bucket(os.environ.get('AWS_BUCKET')) # bucket name defined in .env
+	# bucketList = bucket.list(PREFIX)
+	# orderedList = sorted(bucketList, key=lambda k: k.last_modified)
+
+	# print orderedList
+
+	for key in bucket.list():
+	    print key.name.encode('utf-8')
+	    print key.last_modified
+
+	
+	# prepare the template data dictionary
+	templateData = {
+		'current_user' : current_user,
+		'user_content'  : user_content,		
+		'users' : models.User.objects()
+	}
+	
+	return render_template('photostream.html', **templateData)
 
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
     return value.strftime(format)
@@ -400,5 +454,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-# app.run(host='127.0.0.1', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)

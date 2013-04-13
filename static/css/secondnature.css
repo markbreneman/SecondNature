@@ -2,6 +2,15 @@ body{
   padding: 0px;
 }
 
+a {
+color: #DAC46C;
+}
+
+a:hover {
+color: #C1D0CD;
+text-decoration: none;
+}
+
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
@@ -192,7 +201,7 @@ border-top-right-radius: 5px;
   font-weight: lighter;
 }
 
-#HowItWorks,#SignUp,#Welcome,#Error, #Requirements, #Contact{
+#HowItWorks,#SignUp,#Welcome,#Error, #Requirements, #Contact, #Donate{
   background-color: rgb(25,34,37);
   /*padding:2%;*/
 }
@@ -282,7 +291,7 @@ margin-top: 130%;
 
 label{
 font-family: Gotham;
-font-size: 1.15em;
+font-size: 1.25em;
 color: white; 
 }
 
@@ -304,7 +313,7 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
   margin-left: -20px; 
 }
 
-#Welcome, #Error, #Requirements, #Contact{
+#Welcome, #Error, #Requirements, #Contact, #Donate{
   padding-top: 5%;
   min-height: 1000px;/* this may not be necessary*/
 }
@@ -331,7 +340,56 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
   text-align: justify;  
 }
 
+#DonationForm{
+  margin-top: -8%;
+}
 
+.copySubHeader{
+  color: #667370;
+  font-family: Gotham;
+  font-weight: lighter;
+}
+
+.shippingOptions label{
+  display:inline;
+  color:#667370;
+}
+
+.shippingOptions input[type="radio"]{
+  margin-top: -1%;
+  margin-right: 5%;
+}
+
+.phoneOptions{
+  margin-bottom: 5%;
+}
+.phoneOptions label {
+  display:inline;
+}
+
+.phoneOptions input[type="checkbox"]{
+  margin-top: .5%;
+  float:left;
+  margin-right: 5%;
+}
+
+.colRight{
+  margin-left: 8%;
+}
+
+.colLeft{
+  margin-right:8%
+}
+
+.formDetails{
+  margin-left: 9%;  
+  color:white;
+}
+
+#DonationForm img{
+  float:left; 
+  margin-top:5%;
+}
 /* RESPONSIVE CSS
     -------------------------------------------------- */
 

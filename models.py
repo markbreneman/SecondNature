@@ -11,27 +11,30 @@ class User(mongoengine.Document):
 	email = mongoengine.EmailField(unique=True, required=True, verbose_name="Email Address")
 	password = mongoengine.StringField(default=True,required=True)
 
-	# name = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Name")
-	# address = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Enter Your Address")
-	# address2 = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Address 2")	
-	# zipcode = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Zipcode")
-	# state = mongoengine.ListField(unique=True, required=False, verbose_name="State", choices=[('AL' , 'Alabama'), ('AK' , 'Alaska') ,('AZ' , 'Arizona'), ('AR' , 'Arkansas') ,('CA' , 'California'), ('CO' , 'Colorado') ,('CT' , 'Connecticut'), ('DE' , 'Delaware') ,('FL' , 'Florida'), ('GA' , 'Georgia') ,('HI' , 'Hawaii'), ('ID' , 'Idaho') ,('IL' , 'Illinois'), ('IN' , 'Indiana') ,('IA' , 'Iowa'), ('KS' , 'Kansas') ,('KY' , 'Kentucky'), ('LA' , 'Louisiana') ,('ME' , 'Maine'), ('MD' , 'Maryland') ,('MA' , 'Massachusetts'), ('MI' , 'Michigan') ,('MN' , 'Minnesota'), ('MS' , 'Mississippi') ,('MO' , 'Missouri'), ('MT' , 'Montana') ,('NE' , 'Nebraska'), ('NV' , 'Nevada') ,('NH' , 'New Hampshire'), ('NJ' , 'New Jersey') ,('NM' , 'New Mexico'), ('NY' , 'New York') ,('NC' , 'North Carolina'), ('ND' , 'North Dakota') ,('OH' , 'Ohio'), ('OK' , 'Oklahoma') ,('OR' , 'Oregon'), ('PA' , 'Pennsylvania') ,('RI' , 'Rhode Island'), ('SC' , 'South Carolina') ,('SD' , 'South Dakota'), ('TN' , 'Tennessee') ,('TX' , 'Texas'), ('UT' , 'Utah') ,('VT' , 'Vermont'), ('WA' , 'Washington') ,('WV' , 'West Virginia'), ('WI' , 'Wisconsin') ,('WY' , 'Wyoming')])
+	name = mongoengine.StringField( max_length=30, required=False, verbose_name="Name")
+	address = mongoengine.StringField( max_length=30, required=False, verbose_name="Enter Your Address")
+	address2 = mongoengine.StringField( max_length=30, required=False, verbose_name="Address 2")	
+	zipcode = mongoengine.StringField( max_length=30, required=False, verbose_name="Zipcode")
+	# state = mongoengine.ListField(required=False, verbose_name="State", choices=[('AL' , 'Alabama'), ('AK' , 'Alaska') ,('AZ' , 'Arizona'), ('AR' , 'Arkansas') ,('CA' , 'California'), ('CO' , 'Colorado') ,('CT' , 'Connecticut'), ('DE' , 'Delaware') ,('FL' , 'Florida'), ('GA' , 'Georgia') ,('HI' , 'Hawaii'), ('ID' , 'Idaho') ,('IL' , 'Illinois'), ('IN' , 'Indiana') ,('IA' , 'Iowa'), ('KS' , 'Kansas') ,('KY' , 'Kentucky'), ('LA' , 'Louisiana') ,('ME' , 'Maine'), ('MD' , 'Maryland') ,('MA' , 'Massachusetts'), ('MI' , 'Michigan') ,('MN' , 'Minnesota'), ('MS' , 'Mississippi') ,('MO' , 'Missouri'), ('MT' , 'Montana') ,('NE' , 'Nebraska'), ('NV' , 'Nevada') ,('NH' , 'New Hampshire'), ('NJ' , 'New Jersey') ,('NM' , 'New Mexico'), ('NY' , 'New York') ,('NC' , 'North Carolina'), ('ND' , 'North Dakota') ,('OH' , 'Ohio'), ('OK' , 'Oklahoma') ,('OR' , 'Oregon'), ('PA' , 'Pennsylvania') ,('RI' , 'Rhode Island'), ('SC' , 'South Carolina') ,('SD' , 'South Dakota'), ('TN' , 'Tennessee') ,('TX' , 'Texas'), ('UT' , 'Utah') ,('VT' , 'Vermont'), ('WA' , 'Washington') ,('WV' , 'West Virginia'), ('WI' , 'Wisconsin') ,('WY' , 'Wyoming')])
 
 	active = mongoengine.BooleanField(default=True)
 	isAdmin = mongoengine.BooleanField(default=False)
 	donated = mongoengine.BooleanField(default=False)
+
 	UUID = mongoengine.UUIDField(binary=False	) #Should this be multiple and how to handle arrays?
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 
-user_form = model_form(User, exclude=['password'])
-donate_form = model_form(User, exclude=['username','email','password'])
+user_form = model_form(User, exclude=['password', 'name','address','address2','zipcode','state'])
+signup_form = model_form(User, exclude=['name','address','address2','zipcode','state'])
+donate_form = model_form(User, exclude=['username','password', 'email',])
+
+# donate_form = model_form(User, exclude=['username','email','password'])
 
 # class Address(mongoengine.Document):
+# 	user = mongoengine.ReferenceField('User', dbref=True)
 # 	address = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Please Enter Your Address")
 # 	address2 = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Address 2")
 # 	zipcode = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Zipcode")
-
-
 # 	active = mongoengine.BooleanField(default=True)
 # 	isAdmin = mongoengine.BooleanField(default=False)
 # 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
@@ -62,13 +65,27 @@ donate_form = model_form(User, exclude=['username','email','password'])
 
 
 # Signup Form created from user_form
-class SignupForm(user_form):
+class SignupForm(signup_form):
 	password = PasswordField('Password', validators=[validators.Required(), validators.EqualTo('confirm', message='Passwords must match')])
 	confirm = PasswordField('Repeat Password')
 
 # Login form will provide a Password field (WTForm form field)
 class LoginForm(user_form):
 	password = PasswordField('Password',validators=[validators.Required()])
+
+class DonateForm(user_form):
+    address  = TextField(u'Address',validators=[validators.Required()])
+    address2  = TextField(u'Address 2')
+    zipcode  = IntegerField(u'Zipcode',validators=[validators.Required()])
+    state  = SelectField(u'State', choices=[('-' , '-'),('AL' , 'Alabama'), ('AK' , 'Alaska') ,('AZ' , 'Arizona'), ('AR' , 'Arkansas') ,('CA' , 'California'), ('CO' , 'Colorado') ,('CT' , 'Connecticut'), ('DE' , 'Delaware') ,('FL' , 'Florida'), ('GA' , 'Georgia') ,('HI' , 'Hawaii'), ('ID' , 'Idaho') ,('IL' , 'Illinois'), ('IN' , 'Indiana') ,('IA' , 'Iowa'), ('KS' , 'Kansas') ,('KY' , 'Kentucky'), ('LA' , 'Louisiana') ,('ME' , 'Maine'), ('MD' , 'Maryland') ,('MA' , 'Massachusetts'), ('MI' , 'Michigan') ,('MN' , 'Minnesota'), ('MS' , 'Mississippi') ,('MO' , 'Missouri'), ('MT' , 'Montana') ,('NE' , 'Nebraska'), ('NV' , 'Nevada') ,('NH' , 'New Hampshire'), ('NJ' , 'New Jersey') ,('NM' , 'New Mexico'), ('NY' , 'New York') ,('NC' , 'North Carolina'), ('ND' , 'North Dakota') ,('OH' , 'Ohio'), ('OK' , 'Oklahoma') ,('OR' , 'Oregon'), ('PA' , 'Pennsylvania') ,('RI' , 'Rhode Island'), ('SC' , 'South Carolina') ,('SD' , 'South Dakota'), ('TN' , 'Tennessee') ,('TX' , 'Texas'), ('UT' , 'Utah') ,('VT' , 'Vermont'), ('WA' , 'Washington') ,('WV' , 'West Virginia'), ('WI' , 'Wisconsin') ,('WY' , 'Wyoming')],validators=[validators.Required()])
+
+    android  = BooleanField(u'Is your phone an Android Phone?',validators=[validators.Required()])
+    condition  = BooleanField(u'Does your phones camera and display work?',validators=[validators.Required()])
+    power  = BooleanField(u'Does your phone still hold a charge and power on?',validators=[validators.Required()])
+
+    shipping = RadioField(u'Shipping Options', choices=[('senditmyself','Send it Myself<br><br><div class="span5 formDetails"><small>With this option you use your own packing materials and pay for you own shipping, but you save The Second Nature Project significant shipping costs.</small></div><br><br><br>'),('prepaidshipping', 'Prepaid Shipping Label<br><br><div class="span5 formDetails"><small>With this option you use your own packing materials, but The Second Nature Project will cover the shipping costs.</small></div><br><br>'),('sendmeakit','Send me a shipping kit<br><br><div class="span5 formDetails"><small>With this option The Second Nature Project send you a prepaid package to ship your phone in.</small></div><br><br>')], coerce=unicode)
+
+	
 
 # Donate form will provide a Password field (WTForm form field)
 # class DonateForm(user_form):
