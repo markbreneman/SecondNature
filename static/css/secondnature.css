@@ -549,6 +549,10 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
         font-size: 1.25em;
       }
 
+      .navbar .navbar-inner {
+        background-color: rgba(0, 0, 0, 0.87)
+      }
+
     }
     @media (max-width: 321px) {
       .navbar .brand{
@@ -566,6 +570,11 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(218, 196, 108, 0.6);
       -o-background-size: 190%;
       background-size: 190%;
       }
+
+      .navbar .navbar-inner {
+        background-color: rgba(0, 0, 0, 0.87)
+      }
+      
     }
 
 @font-face {
