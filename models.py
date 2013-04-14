@@ -21,37 +21,31 @@ class User(mongoengine.Document):
 	isAdmin = mongoengine.BooleanField(default=False)
 	donated = mongoengine.BooleanField(default=False)
 
-	UUID = mongoengine.UUIDField(binary=False	) #Should this be multiple and how to handle arrays?
+	# uuid = mongoengine.UUIDField(binary=False, verbose_name="UUID")
+	# uuid = mongoengine.IntField(u'UUID', verbose_name="UUID")
+	UUID =	mongoengine.ReferenceField('UUID', dbref=True) # ^^^ points to User model ^^^
+	
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
-
+	
 user_form = model_form(User, exclude=['password', 'name','address','address2','zipcode','state'])
 signup_form = model_form(User, exclude=['name','address','address2','zipcode','state'])
-donate_form = model_form(User, exclude=['username','password', 'email',])
+donate_form = model_form(User, exclude=['username','password', 'email'])
+uuid_form = model_form(User, exclude=['password', 'email','address','address2','zipcode','state'] )
 
-# class Project(mongoengine.Document):
-# 	name = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Name")
-# 	location = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Location")
-# 	researcher = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Researcher Name")
-# 	UUIDS = mongoengine.UUIDField() #Should this be multiple and how to handle arrays?
-# 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
+class UUID(mongoengine.document):
+	# UUID = mongoengine.UUIDField(binary=False, verbose_name="UUID")
+	uuid = mongoengine.IntField(u'UUID', verbose_name="UUID")
+	
 
-# class Researcher(mongoengine.Document):
-# 	username = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Pick a Username")
-# 	email = mongoengine.EmailField(unique=True, required=True, verbose_name="Email Address")
-# 	password = mongoengine.StringField(default=True,required=True)
+class Project(mongoengine.Document):
+	name = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Name")
+	location = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Location")
+	researcher = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Researcher Name")
+	UUID =	mongoengine.ReferenceField('UUID', dbref=True) # ^^^ points to User model ^^^
+	UUIDS = mongoengine.ListField( mongoengine.EmbeddedDocumentField(UUID), verbose_name="UUID's")
+	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 
-# 	name = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Pick a Username")
-# 	address = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Please Enter Your Address")
-# 	address2 = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Address 2")	
-# 	zipcode = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Zipcode")
-# 	state = mongoengine.ListField(unique=True, required=True, verbose_name="State")
-
-# 	active = mongoengine.BooleanField(default=True)
-# 	isAdmin = mongoengine.BooleanField(default=False)
-# 	donated = mongoengine.BooleanField(default=False)
-# 	UUID = mongoengine.UUIDField() #Should this be multiple and how to handle arrays?
-# 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
-
+project_form = model_form(Project)	
 
 # Signup Form created from user_form
 class SignupForm(signup_form):
@@ -73,6 +67,8 @@ class DonateForm(user_form):
     power  = BooleanField(u'Does your phone still hold a charge and power on?',validators=[validators.Required()])
 
     shipping = RadioField(u'Shipping Options', choices=[('senditmyself','Send it Myself<br><br><div class="span5 formDetails"><small>With this option you use your own packing materials and pay for you own shipping, but you save The Second Nature Project significant shipping costs.</small></div><br><br><br>'),('prepaidshipping', 'Prepaid Shipping Label<br><br><div class="span5 formDetails"><small>With this option you use your own packing materials, but The Second Nature Project will cover the shipping costs.</small></div><br><br>'),('sendmeakit','Send me a shipping kit<br><br><div class="span5 formDetails"><small>With this option The Second Nature Project send you a prepaid package to ship your phone in.</small></div><br><br>')], coerce=unicode)
+
+
 
 
 #################  end of user models/forms ##########################

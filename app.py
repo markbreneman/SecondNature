@@ -243,35 +243,16 @@ def login():
 @login_required
 def admin_main():
 
-	contentForm = models.content_form(request.form)
+	projectForm = models.project_form(request.form)
+	uuidForm=models.uuid_form(request.form)	
 
-	if request.method=="POST" and contentForm.validate():
-		app.logger.debug(request.form)
+	templateData = {
+		'allContent' : models.Content.objects(user=current_user.id),
+		'current_user' : current_user,
+		'project_form' : projectForm,
+		'uuid_form':uuidForm
 		
-		newContent = models.Content()
-		newContent.title = request.form.get('title')
-		newContent.content = request.form.get('content')
-
-		#link to current user
-		newContent.user = current_user.get()
-
-		try:
-			newContent.save()
-
-		except:
-			e = sys.exc_info()
-			app.logger.error(e)
-			
-		return redirect('/admin')
-
-	else:
-		templateData = {
-			'allContent' : models.Content.objects(user=current_user.id),
-			'current_user' : current_user,
-			'form' : contentForm,
-			'formType' : 'New'
-		}
-	
+	}
 
 	return render_template('admin.html', **templateData)
 		
