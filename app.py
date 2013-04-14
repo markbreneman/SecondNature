@@ -151,18 +151,13 @@ def register():
 	if request.method == 'POST' and registerForm.validate():
 		email = request.form['email']
 		username = request.form['username']
-		# address = request.form['address']
-		# address2 = request.form['address2']
-		# zipcode = request.form['zipcode']
-		# state = request.form['state']
 
 		# generate password hash
 		password_hash = flask_bcrypt.generate_password_hash(request.form['password'])
 		
 		# prepare User
 		user = User(username=username, email=email, password=password_hash)
-		# user = User(username=username, email=email, password=password_hash, address=address, address2=address2, zipcode=zipcode, state=state)
-		
+	
 		# save new user, but there might be exceptions (uniqueness of email and/or username)
 		try:
 			user.save()	
@@ -251,7 +246,6 @@ def admin_main():
 		'current_user' : current_user,
 		'project_form' : projectForm,
 		'uuid_form':uuidForm
-		
 	}
 
 	return render_template('admin.html', **templateData)
@@ -388,6 +382,35 @@ def donate():
 	}
 	
 	return render_template('donate.html', **templateData)
+
+
+@app.route("/donated", methods=["POST"])
+def donated():
+	user_content = models.Content.objects	
+
+	address = request.form['address']
+	address2 = request.form['address2']
+	zipcode = request.form['zipcode']
+	state = request.form['state']
+
+	if request.method == 'POST':
+		userData={
+		'address': address,
+		'address2': address2,
+		'zipcode' : zipcode
+		}
+		current_user = models.User(**userData)
+		
+
+	# prepare the template data dictionary
+	templateData = {
+		'current_user' : current_user,
+		'user_content'  : user_content,
+		'users' : models.User.objects(),
+	}
+
+	return render_template('donated.html', **templateData)
+
 
 @app.route("/photostream", methods=["GET"])
 def photostream():

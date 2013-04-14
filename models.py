@@ -4,7 +4,6 @@ from wtforms.fields import * # for our custom signup form
 from flask.ext.mongoengine.wtf.orm import validators
 from flask.ext.mongoengine import *
 import datetime
-
     
 class User(mongoengine.Document):
 	username = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Pick a Username")
@@ -15,34 +14,26 @@ class User(mongoengine.Document):
 	address = mongoengine.StringField( max_length=30, required=False, verbose_name="Enter Your Address")
 	address2 = mongoengine.StringField( max_length=30, required=False, verbose_name="Address 2")	
 	zipcode = mongoengine.StringField( max_length=30, required=False, verbose_name="Zipcode")
+	state = mongoengine.StringField( max_length=30, required=False, verbose_name="State")
 	# state = mongoengine.ListField(required=False, verbose_name="State", choices=[('AL' , 'Alabama'), ('AK' , 'Alaska') ,('AZ' , 'Arizona'), ('AR' , 'Arkansas') ,('CA' , 'California'), ('CO' , 'Colorado') ,('CT' , 'Connecticut'), ('DE' , 'Delaware') ,('FL' , 'Florida'), ('GA' , 'Georgia') ,('HI' , 'Hawaii'), ('ID' , 'Idaho') ,('IL' , 'Illinois'), ('IN' , 'Indiana') ,('IA' , 'Iowa'), ('KS' , 'Kansas') ,('KY' , 'Kentucky'), ('LA' , 'Louisiana') ,('ME' , 'Maine'), ('MD' , 'Maryland') ,('MA' , 'Massachusetts'), ('MI' , 'Michigan') ,('MN' , 'Minnesota'), ('MS' , 'Mississippi') ,('MO' , 'Missouri'), ('MT' , 'Montana') ,('NE' , 'Nebraska'), ('NV' , 'Nevada') ,('NH' , 'New Hampshire'), ('NJ' , 'New Jersey') ,('NM' , 'New Mexico'), ('NY' , 'New York') ,('NC' , 'North Carolina'), ('ND' , 'North Dakota') ,('OH' , 'Ohio'), ('OK' , 'Oklahoma') ,('OR' , 'Oregon'), ('PA' , 'Pennsylvania') ,('RI' , 'Rhode Island'), ('SC' , 'South Carolina') ,('SD' , 'South Dakota'), ('TN' , 'Tennessee') ,('TX' , 'Texas'), ('UT' , 'Utah') ,('VT' , 'Vermont'), ('WA' , 'Washington') ,('WV' , 'West Virginia'), ('WI' , 'Wisconsin') ,('WY' , 'Wyoming')])
 
 	active = mongoengine.BooleanField(default=True)
 	isAdmin = mongoengine.BooleanField(default=False)
 	donated = mongoengine.BooleanField(default=False)
-
-	# uuid = mongoengine.UUIDField(binary=False, verbose_name="UUID")
-	# uuid = mongoengine.IntField(u'UUID', verbose_name="UUID")
-	UUID =	mongoengine.ReferenceField('UUID', dbref=True) # ^^^ points to User model ^^^
-	
+	uuid = mongoengine.IntField(u'UUID', verbose_name="UUID")
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 	
 user_form = model_form(User, exclude=['password', 'name','address','address2','zipcode','state'])
 signup_form = model_form(User, exclude=['name','address','address2','zipcode','state'])
 donate_form = model_form(User, exclude=['username','password', 'email'])
-uuid_form = model_form(User, exclude=['password', 'email','address','address2','zipcode','state'] )
+uuid_form = model_form(User, exclude=['password','name','email','address','address2','zipcode','state'] )
 
-class UUID(mongoengine.document):
-	# UUID = mongoengine.UUIDField(binary=False, verbose_name="UUID")
-	uuid = mongoengine.IntField(u'UUID', verbose_name="UUID")
-	
 
 class Project(mongoengine.Document):
 	name = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Name")
 	location = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Location")
 	researcher = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Researcher Name")
-	UUID =	mongoengine.ReferenceField('UUID', dbref=True) # ^^^ points to User model ^^^
-	UUIDS = mongoengine.ListField( mongoengine.EmbeddedDocumentField(UUID), verbose_name="UUID's")
+	UUID =	mongoengine.ReferenceField('User', dbref=True) 
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 
 project_form = model_form(Project)	

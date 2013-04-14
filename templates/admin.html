@@ -41,17 +41,17 @@
                         <form action="/addproject" method="POST">
                             <div class="span12">
                               <div class= "span5 colLeft">
-                                <div class="span5 phoneOptions">
+                                <div class="span5 projectEditing">
                                 <h2 class="copySubHeader">Project Editing</h2>
                                 <p style="color:white">Create Projects and Add UUID's to Projects</p>
                                 {{ project_form.csrf_token }}
                                 {{ project_form.name.label }} {{ project_form.name }} <br>
                                 {{ project_form.location.label }} {{ project_form.location }} <br>
                                 {{ project_form.researcher.label }} {{ project_form.researcher }}<br>
-                                {{ project_form.UUIDS.label }} {{ project_form.UUIDS }}
+                                {{ project_form.UUID.label }} {{ project_form.UUID }}<br>
+                                <input type="submit" value="submit"> 
                                 </div><!-- /.phoneOptions -->
                               </div><!-- /.colLeft -->
-                              <input type="submit" value="submit"> 
                               </form>
 
 
@@ -61,8 +61,7 @@
                               <div class="span5 colRight">
                               <h2 class="copySubHeader">User Editing</h2>
                               <p style="color:white">Add UUID's to a User Profile</p>
-                              
-	                            {{ uuid_form.name.label }} {{ uuid_form.name }} <br>                                
+	                            {{ uuid_form.username.label }} {{ uuid_form.username }} <br>                                
                                 {{ uuid_form.uuid.label }} {{ uuid_form.uuid }}
                               <br>
                               <input type="submit" value="Add UUID"> <small style="color:white;"></small>
