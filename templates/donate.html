@@ -5,39 +5,37 @@
       <div class="carousel-inner">
           <div class="container">
             <div class="row">
-
               <h1 class="sectionTitle">Welcome {{ current_user.username}},</h1> 
-            
               <h3 class="copyText">Thank you so much for deciding to donate!  Our service relies your donations and we are thankful for your generosity. If you have a smartphone that you would like to donate please review our <a href="/requirements">requirements</a>, and fill out the following form below. </h3>
               <div class="container">
                 <!-- <div id="Donationheader" class="span3 hidden-desktop hidden-tablet"> -->
                 <div id="Donationheader" class="span12">
                     <h1 class="sectionTitle">Second Nature Project Donation Form</h1>
                 </div>
-              </div>
-              
-              <div class="container">
-                    {% with messages = get_flashed_messages(category_filter=["register"]) %}
-                      {% if messages %}
-                        <ul class=flashes>
-                        {% for message in messages %}
-                          <li class="alert">{{ message }}</li>
-                        {% endfor %}
-                        </ul>
-                      {% endif %}
-                    {% endwith %}
-
-                    {% if form.errors %}
-                    <ul class="errors">
-                        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
-                            {% for error in field_errors %}
-                                <li class="alert">{{ form[field_name].label }}: {{ error }}</li>
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-
+              </div>           
                     <div id="DonationForm">
+                      <div class="container">
+                        {% with messages = get_flashed_messages(category_filter=["donate"]) %}
+                        {% if messages %}
+                          <ul class=flashes>
+                          {% for message in messages %}
+                            <li class="alert">{{ message }}</li>
+                          {% endfor %}
+                          </ul>
+                        {% endif %}
+                      {% endwith %}
+
+                      {% if form.errors %}
+                      <ul class="errors">
+                          {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                              {% for error in field_errors %}
+                                  <li class="alert">{{ form[field_name].label }}: {{ error }}</li>
+                              {% endfor %}
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </div>
+
                         <form action="/donated" method="POST">
                             <div class="span12">
                               <div class= "span5 colLeft">
@@ -73,8 +71,9 @@
                               
                               {{ form.address.label }} {{ form.address }}
                               {{ form.address2.label }} {{ form.address2 }}                            
-                              {{ form.zipcode.label }} {{ form.zipcode }}
+                              {{ form.city.label }} {{ form.city }}
                               {{ form.state.label }} {{ form.state }}
+                              {{ form.zipcode.label }} {{ form.zipcode }}
                               <br>
                               <input type="submit" value="Go"> <small style="color:white;">(all fields required)</small>
                             </div><!-- /.colRight -->

@@ -15,6 +15,7 @@ class User(mongoengine.Document):
 	address2 = mongoengine.StringField( max_length=30, required=False, verbose_name="Address 2")	
 	zipcode = mongoengine.StringField( max_length=30, required=False, verbose_name="Zipcode")
 	state = mongoengine.StringField( max_length=30, required=False, verbose_name="State")
+	city = mongoengine.StringField( max_length=30, required=False, verbose_name="city")
 	# state = mongoengine.ListField(required=False, verbose_name="State", choices=[('AL' , 'Alabama'), ('AK' , 'Alaska') ,('AZ' , 'Arizona'), ('AR' , 'Arkansas') ,('CA' , 'California'), ('CO' , 'Colorado') ,('CT' , 'Connecticut'), ('DE' , 'Delaware') ,('FL' , 'Florida'), ('GA' , 'Georgia') ,('HI' , 'Hawaii'), ('ID' , 'Idaho') ,('IL' , 'Illinois'), ('IN' , 'Indiana') ,('IA' , 'Iowa'), ('KS' , 'Kansas') ,('KY' , 'Kentucky'), ('LA' , 'Louisiana') ,('ME' , 'Maine'), ('MD' , 'Maryland') ,('MA' , 'Massachusetts'), ('MI' , 'Michigan') ,('MN' , 'Minnesota'), ('MS' , 'Mississippi') ,('MO' , 'Missouri'), ('MT' , 'Montana') ,('NE' , 'Nebraska'), ('NV' , 'Nevada') ,('NH' , 'New Hampshire'), ('NJ' , 'New Jersey') ,('NM' , 'New Mexico'), ('NY' , 'New York') ,('NC' , 'North Carolina'), ('ND' , 'North Dakota') ,('OH' , 'Ohio'), ('OK' , 'Oklahoma') ,('OR' , 'Oregon'), ('PA' , 'Pennsylvania') ,('RI' , 'Rhode Island'), ('SC' , 'South Carolina') ,('SD' , 'South Dakota'), ('TN' , 'Tennessee') ,('TX' , 'Texas'), ('UT' , 'Utah') ,('VT' , 'Vermont'), ('WA' , 'Washington') ,('WV' , 'West Virginia'), ('WI' , 'Wisconsin') ,('WY' , 'Wyoming')])
 
 	active = mongoengine.BooleanField(default=True)
@@ -50,13 +51,14 @@ class LoginForm(user_form):
 class DonateForm(user_form):
     address  = TextField(u'Address',validators=[validators.Required()])
     address2  = TextField(u'Address 2')
-    zipcode  = IntegerField(u'Zipcode',validators=[validators.Required()])
+    city  = TextField(u'City',validators=[validators.Required()])
+    # state  = TextField(u'State',validators=[validators.Required()])
     state  = SelectField(u'State', choices=[('-' , '-'),('AL' , 'Alabama'), ('AK' , 'Alaska') ,('AZ' , 'Arizona'), ('AR' , 'Arkansas') ,('CA' , 'California'), ('CO' , 'Colorado') ,('CT' , 'Connecticut'), ('DE' , 'Delaware') ,('FL' , 'Florida'), ('GA' , 'Georgia') ,('HI' , 'Hawaii'), ('ID' , 'Idaho') ,('IL' , 'Illinois'), ('IN' , 'Indiana') ,('IA' , 'Iowa'), ('KS' , 'Kansas') ,('KY' , 'Kentucky'), ('LA' , 'Louisiana') ,('ME' , 'Maine'), ('MD' , 'Maryland') ,('MA' , 'Massachusetts'), ('MI' , 'Michigan') ,('MN' , 'Minnesota'), ('MS' , 'Mississippi') ,('MO' , 'Missouri'), ('MT' , 'Montana') ,('NE' , 'Nebraska'), ('NV' , 'Nevada') ,('NH' , 'New Hampshire'), ('NJ' , 'New Jersey') ,('NM' , 'New Mexico'), ('NY' , 'New York') ,('NC' , 'North Carolina'), ('ND' , 'North Dakota') ,('OH' , 'Ohio'), ('OK' , 'Oklahoma') ,('OR' , 'Oregon'), ('PA' , 'Pennsylvania') ,('RI' , 'Rhode Island'), ('SC' , 'South Carolina') ,('SD' , 'South Dakota'), ('TN' , 'Tennessee') ,('TX' , 'Texas'), ('UT' , 'Utah') ,('VT' , 'Vermont'), ('WA' , 'Washington') ,('WV' , 'West Virginia'), ('WI' , 'Wisconsin') ,('WY' , 'Wyoming')],validators=[validators.Required()])
+    zipcode  = IntegerField(u'Zipcode',validators=[validators.Required()])
 
     android  = BooleanField(u'Is your phone an Android Phone?',validators=[validators.Required()])
     condition  = BooleanField(u'Does your phones camera and display work?',validators=[validators.Required()])
     power  = BooleanField(u'Does your phone still hold a charge and power on?',validators=[validators.Required()])
-
     shipping = RadioField(u'Shipping Options', choices=[('senditmyself','Send it Myself<br><br><div class="span5 formDetails"><small>With this option you use your own packing materials and pay for you own shipping, but you save The Second Nature Project significant shipping costs.</small></div><br><br><br>'),('prepaidshipping', 'Prepaid Shipping Label<br><br><div class="span5 formDetails"><small>With this option you use your own packing materials, but The Second Nature Project will cover the shipping costs.</small></div><br><br>'),('sendmeakit','Send me a shipping kit<br><br><div class="span5 formDetails"><small>With this option The Second Nature Project send you a prepaid package to ship your phone in.</small></div><br><br>')], coerce=unicode)
 
 

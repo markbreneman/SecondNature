@@ -221,7 +221,7 @@ def login():
 	
 		else:
 			flash("Incorrect email and password submission","login")
-			return redirect("/home")
+			return redirect("/login")
 
 	else:
 
@@ -230,8 +230,6 @@ def login():
 		}
 
 		return render_template('/auth/login.html', **templateData)
-
-
 
 
 @app.route('/admin', methods=['GET','POST'])
@@ -369,7 +367,7 @@ def donate():
 	# get requested user's content
 	user_content = models.Content.objects
 	
-	# prepare registration form		
+	# prepare donation form		
 	donateForm = models.DonateForm(request.form)
 	app.logger.info(request.form)
 	
@@ -383,30 +381,39 @@ def donate():
 	
 	return render_template('donate.html', **templateData)
 
-
 @app.route("/donated", methods=["POST"])
 def donated():
-	user_content = models.Content.objects	
+
+	donateForm = models.DonateForm(request.form)
+	userloggedin=current_user.get()
 
 	address = request.form['address']
 	address2 = request.form['address2']
-	zipcode = request.form['zipcode']
+	city = request.form['city']
 	state = request.form['state']
+	zipcode = request.form['zipcode']
+	
 
+	app.logger.info(request.form)
+
+	# if request.method == 'POST' and donateForm.validate():
 	if request.method == 'POST':
-		userData={
-		'address': address,
-		'address2': address2,
-		'zipcode' : zipcode
-		}
-		current_user = models.User(**userData)
-		
+		userloggedin.address=address
+		userloggedin.address2=address2
+		userloggedin.city=city
+		userloggedin.state=state
+		userloggedin.zipcode=zipcode
+		userloggedin.donated=True
+		userloggedin.save()
+	
+	else:
+			flash("All Fields Required","donate")
+			return redirect("/donate")
 
 	# prepare the template data dictionary
 	templateData = {
 		'current_user' : current_user,
-		'user_content'  : user_content,
-		'users' : models.User.objects(),
+		'users' : user
 	}
 
 	return render_template('donated.html', **templateData)
@@ -424,36 +431,49 @@ def photostream():
 	bucket = s3conn.get_bucket(os.environ.get('AWS_BUCKET')) # bucket name defined in .env
 
 	#Variable for Bucket Parsing
-	photolist = []
+	photoList = []
 	splitFileName = []
 	uuidlist = []
-	
+	theList=[]	
+	projectList=[]
+
+
 	#List all my file in the bucket and create a photoList
 	for key in bucket.list():
-	    photolist.append(key.name.encode('utf-8'))
+	    photoList.append(key.name.encode('utf-8'))
 	    key.set_acl('public-read-write')
 
 	#Parse the PhotoList
-	for photo in photolist:
+	for photo in photoList:
 		#Split the string
 	    splitFileName = photo.split("_",1)
 	    #splitfilename[0] is uuid
 	    uuidlist.append(splitFileName[0])
 	    #splitfilename[1] is timestamp
-	    timestamp=splitFileName[1].split(".",1)[0]
+	    # timestamp=splitFileName[1].split(".",1)[0]
 	    
 	    #unique UUID
-	    projectlist = list(set(uuidlist))
-	    
-	app.logger.debug(projectlist)
+	    projectList = list(set(uuidlist))
+
+		# for projects in projectList:
+		# 	projects
+		# 	if splitFileName[0]==projects:
+		# 		projecto=[]
+		# 		theList.append(projecto)
+	
+	
+	app.logger.debug(photoList)
+	app.logger.debug(projectList)
+	app.logger.debug(theList)
+
 	   
 	# prepare the template data dictionary
 	templateData = {
 		'current_user' : current_user,
 		'user_content'  : user_content,		
 		'users' : models.User.objects(),
-		'photolist':photolist,
-		'projectlist': projectlist
+		'photolist':photoList,
+		'projectlist': projectList
 
 	}
 	
@@ -478,5 +498,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-# app.run(host='127.0.0.1', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)
