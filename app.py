@@ -434,9 +434,7 @@ def photostream():
 	photoList = []
 	splitFileName = []
 	uuidlist = []
-	theList=[]	
-	projectList=[]
-
+	projects={}
 
 	#List all my file in the bucket and create a photoList
 	for key in bucket.list():
@@ -448,23 +446,20 @@ def photostream():
 		#Split the string
 	    splitFileName = photo.split("_",1)
 	    #splitfilename[0] is uuid
+	    uuid=splitFileName[0]
 	    uuidlist.append(splitFileName[0])
 	    #splitfilename[1] is timestamp
-	    # timestamp=splitFileName[1].split(".",1)[0]
+	    timestamp=splitFileName[1].split(".",1)[0]
 	    
-	    #unique UUID
-	    projectList = list(set(uuidlist))
+	    if uuid in projects:
+	    	projects[uuid].append(timestamp)
+	    else: 
+	    	projects[uuid]=[timestamp]
 
-		# for projects in projectList:
-		# 	projects
-		# 	if splitFileName[0]==projects:
-		# 		projecto=[]
-		# 		theList.append(projecto)
-	
-	
+	app.logger.debug(projects) 
 	app.logger.debug(photoList)
-	app.logger.debug(projectList)
-	app.logger.debug(theList)
+	# app.logger.debug(projectList)
+	# app.logger.debug(theList)
 
 	   
 	# prepare the template data dictionary
@@ -473,12 +468,11 @@ def photostream():
 		'user_content'  : user_content,		
 		'users' : models.User.objects(),
 		'photolist':photoList,
-		'projectlist': projectList
+		# 'projectlist': projectList
 
 	}
 	
 	return render_template('photostream.html', **templateData)
-
 
 
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
@@ -498,5 +492,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-# app.run(host='127.0.0.1', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)
