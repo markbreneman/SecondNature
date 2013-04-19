@@ -39,6 +39,31 @@ class Project(mongoengine.Document):
 
 project_form = model_form(Project)	
 
+
+class Image(mongoengine.Document):
+
+	title = mongoengine.StringField(max_length=120, required=True)
+	description = mongoengine.StringField()
+	postedby = mongoengine.StringField(max_length=120, required=True, verbose_name="Your name")
+
+	tags = mongoengine.ListField( mongoengine.StringField())
+
+	filename = mongoengine.StringField()
+
+	# Comments is a list of Document type 'Comments' defined above
+	# comments = mongoengine.ListField( mongoengine.EmbeddedDocumentField(Comment) )
+
+	# Timestamp will record the date and time idea was created.
+	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
+
+
+photo_form = model_form(Image)
+
+class photo_upload_form(photo_form):
+	fileupload = FileField('Upload an image file')
+
+
+	
 # Signup Form created from user_form
 class SignupForm(signup_form):
 	password = PasswordField('Password', validators=[validators.Required(), validators.EqualTo('confirm', message='Passwords must match')])
