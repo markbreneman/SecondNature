@@ -502,8 +502,8 @@ def upload():
 		
 		if uploaded_file:
 			# create filename, prefixed with datetime
-			now = datetime.datetime.now()
-			filename = now.strftime('%Y%m%d%H%M%s') + "-" + secure_filename(uploaded_file.filename)
+			# now = datetime.datetime.now()
+			filename = secure_filename(uploaded_file.filename)
 			# thumb_filename = now.strftime('%Y%m%d%H%M%s') + "-" + secure_filename(uploaded_file.filename)
 
 			# connect to s3
@@ -523,9 +523,9 @@ def upload():
 			if k and k.size > 0:
 
 				submitted_image = models.Image()
-				submitted_image.title = request.form.get('title')
-				submitted_image.description = request.form.get('description')
-				submitted_image.postedby = request.form.get('postedby')
+				submitted_image.fileName = request.form.get('fileName')
+				submitted_image.timeTaken = request.form.get('timeTaken')
+				submitted_image.UUID = request.form.get('UUID')
 				submitted_image.filename = filename # same filename of s3 bucket file
 				submitted_image.save()
 
