@@ -12,12 +12,12 @@ img {
 
 	<div class="row">
 		<div class="span5">
-		    {% if form.errors %}
+		    {% if uploadForm.errors %}
 		    <ul class="errors">
-		        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+		        {% for field_name, field_errors in uploadForm.errors|dictsort if field_errors %}
 		            {% for error in field_errors %}
 		                <li class="alert alert-error">
-		                	{{ form[field_name].label.text }} - {{ error }}
+		                	{{ uploadForm[field_name].label.text }} - {{ error }}
 		               	</li>
 		            {% endfor %}
 		        {% endfor %}
@@ -28,17 +28,17 @@ img {
 		    <p>Behave.</p>
 			<form method="POST" enctype="multipart/form-data">
 				
-				{{ form.title.label }}
-				{{ form.title }}
+				{{ uploadForm.title.label }}
+				{{ uploadForm.title }}
 
-				{{ form.description.label }}
-				{{ form.description }}
+				{{ uploadForm.description.label }}
+				{{ uploadForm.description }}
 
-				{{ form.postedby.label }}
-				{{ form.postedby }}
+				{{ uploadForm.postedby.label }}
+				{{ uploadForm.postedby }}
 				<br>
-				{{ form.fileupload.label }}
-				{{ form.fileupload }}
+				{{ uploadForm.fileupload.label }}
+				{{ uploadForm.fileupload }}
 				<br><br>
 				<input class="btn btn-success" type="submit" value="upload">
 

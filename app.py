@@ -482,7 +482,7 @@ def upload():
 
 	# get Idea form from models.py
 	photo_upload_form = models.photo_upload_form(request.form)
-
+	loginForm = models.LoginForm(request.form)
 	# if form was submitted and it is valid...
 	# if request.method == "POST" and photo_upload_form.validate():
 	if request.method == "POST":
@@ -544,7 +544,8 @@ def upload():
 		# render the template
 		templateData = {
 			'images' : images,
-			'form' : photo_upload_form
+			'uploadForm' : photo_upload_form,
+			'form': loginForm
 		}
 
 		return render_template("upload.html", **templateData)
@@ -568,5 +569,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    # app.run(host='0.0.0.0', port=port)
-app.run(host='127.0.0.1', port=port)
+    app.run(host='0.0.0.0', port=port)
+# app.run(host='127.0.0.1', port=port)
