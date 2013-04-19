@@ -50,8 +50,8 @@ img {
 			<h2>Images</h2>
 			<hr>
 			{% for img in images %}
-				<a title="{{img.fileName}}" alt="Title:{{img.fileName}}. Description: {{img.UUID}}" href="https://s3.amazonaws.com/secondnatureproject/{{img.fileName}}">
-				<img src="https://s3.amazonaws.com/secondnatureproject/{{img.fileName}}" class="img-polaroid"></a>
+				<a title="{{img.fileName}}" alt="Title:{{img.fileName}}. Description: {{img.UUID}}" href="https://s3.amazonaws.com/secondnatureproject/{{img.filename}}">
+				<img src="https://s3.amazonaws.com/secondnatureproject/{{img.filename}}" class="img-polaroid"></a>
 				<br>
 				<h3>{{img.fileName}}</h3>
 					<br>
