@@ -42,9 +42,10 @@ project_form = model_form(Project)
 
 class Image(mongoengine.Document):
 
-	fileName = mongoengine.StringField(verbose_name="File Name")
+	# test = mongoengine.StringField(verbose_name="File Names")
 	timeTaken = mongoengine.StringField(verbose_name="Time Taken")
 	UUID = mongoengine.StringField(verbose_name="Device ID - UUID")
+	filename = mongoengine.StringField()
 
 	# Comments is a list of Document type 'Comments' defined above
 	# comments = mongoengine.ListField( mongoengine.EmbeddedDocumentField(Comment) )

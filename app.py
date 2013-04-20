@@ -523,7 +523,7 @@ def upload():
 			if k and k.size > 0:
 
 				submitted_image = models.Image()
-				# submitted_image.fileName = request.form.get('fileName')
+				# submitted_image.test = request.form.get('test')
 				submitted_image.timeTaken = request.form.get('timeTaken')
 				submitted_image.UUID = request.form.get('UUID')
 				submitted_image.filename = filename # same filename of s3 bucket file

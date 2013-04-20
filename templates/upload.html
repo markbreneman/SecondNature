@@ -28,9 +28,6 @@ img {
 		    <p>Behave.</p>
 			<form method="POST" enctype="multipart/form-data">
 				
-				{{ uploadForm.fileName.label }}
-				{{ uploadForm.fileName }}
-
 				{{ uploadForm.timeTaken.label }}
 				{{ uploadForm.timeTaken }}
 
@@ -50,10 +47,10 @@ img {
 			<h2>Images</h2>
 			<hr>
 			{% for img in images %}
-				<a title="{{img.fileName}}" alt="Title:{{img.fileName}}. Description: {{img.UUID}}" href="https://s3.amazonaws.com/secondnatureproject/{{img.filename}}">
+				<a title="{{img.fileName}}" alt="Title:{{img.filename}}. Description: {{img.UUID}}" href="https://s3.amazonaws.com/secondnatureproject/{{img.filename}}">
 				<img src="https://s3.amazonaws.com/secondnatureproject/{{img.filename}}" class="img-polaroid"></a>
 				<br>
-				<h3>{{img.fileName}}</h3>
+				<h3>{{img.filename}}</h3>
 					<br>
 					{{ img.timeTaken }} - {{ img.timestamp.strftime("%m/%d/%y")}}
 				</p>
