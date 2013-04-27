@@ -2,6 +2,7 @@
 import os,sys,re,datetime
 # import re
 # import datetime
+import time
 
 from flask import Flask, session, request, url_for, escape, render_template, json, jsonify, flash, redirect, abort
 from werkzeug import secure_filename
@@ -425,6 +426,8 @@ def donated():
 @app.route("/photostream", methods=["GET"])
 def photostream():
 
+	loginForm = models.LoginForm(request.form)
+
 	# get requested user's content
 	user_content = models.Content.objects
 
@@ -435,35 +438,107 @@ def photostream():
 
 	#Variable for Bucket Parsing
 	photoList = []
-	splitFileName = []
-	uuidlist = []
-	projects={}
+	# splitFileName = []
+	# uuidlist = []
+	# projects={}
 
 	#List all my file in the bucket and create a photoList
 	for key in bucket.list():
 	    photoList.append(key.name.encode('utf-8'))
 	    key.set_acl('public-read-write')
-
-	#Parse the PhotoList
-	for photo in photoList:
-		#Split the string
-	    splitFileName = photo.split("_",1)
-	    #splitfilename[0] is uuid
+	    #bucket is a an object of key values pairs: key.Bucket, key.name
+	    # app.logger.debug(key.name)    
+	    splitFileName = key.name.split("_",1)
+	    # app.logger.debug(splitFileName)    
 	    uuid=splitFileName[0]
-	    uuidlist.append(splitFileName[0])
-	    #splitfilename[1] is timestamp
-	    timestamp=splitFileName[1].split(".",1)[0]
-	    
-	    if uuid in projects:
-	    	projects[uuid].append(timestamp)
-	    else: 
-	    	projects[uuid]=[timestamp]
+	    timestamp=float(splitFileName[1].split(".",1)[0])# In milliseconds
+	    convertedtime=time.strftime("%a, %B %d, %H:%M:%S %Y",  time.localtime(timestamp/1000))
+	    #This is temporary for looping over files already there.
+	    if uuid == "353833040538248":
+	    	#Tree Shrew
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "353833040538248"
+	    	new_image.project = "Tenkile Conservation Alliance "		
+	    	new_image.location = "Wewak, Indonesia"
+	    	new_image.latitude = -0.2669
+	    	new_image.longitude = 100.3833
+	    	new_image.batterylife = 73
+	    	new_image.save()
 
-	app.logger.debug(projects) 
-	app.logger.debug(photoList)
-	# app.logger.debug(projectList)
-	# app.logger.debug(theList)
+	    if uuid == "355031040939917":
+	    	#Tree Kangaroo
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "355031040939917"
+	    	new_image.projectName = "Tenkile Conservation Alliance "		
+	    	new_image.location = "Wewak, Indonesia"
+	    	new_image.latitude = -0.2669
+	    	new_image.longitude = 100.3833
+	    	new_image.batterylife = 65
+	    	new_image.save()
 
+	    if uuid == "355031040939916":
+	    	#Tiger
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "355031040939916"
+	    	new_image.projectName = "Amur Tiger Conservation Project "		
+	    	new_image.location = "Primorsky Krai, Siberia"
+	    	new_image.latitude = 43.1666
+	    	new_image.longitude = 131.9333
+	    	new_image.batterylife = 82
+	    	new_image.save()
+
+	    if uuid == "354653040538259":
+	    	#Ebony Langurs
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "354653040538259"
+	    	new_image.projectName = "Biogeography Ebony Langurs Project "		
+	    	new_image.location = "Papua New Guinea, Indonesia"
+	    	new_image.latitude = -5.9054
+	    	new_image.longitude = 147.408
+	    	new_image.batterylife = 21
+	    	new_image.save()
+
+	    if uuid == "355031040939900":
+	    	#Crowned Guenon
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "355031040939900"
+	    	new_image.projectName = "Okapi Wildlife Reserve"		
+	    	new_image.location = "Wamba, DR Congo"
+	    	new_image.latitude = -4.41667
+	    	new_image.longitude = 15.43333
+	    	new_image.batterylife = 33
+	    	new_image.save()
+
+	    if uuid == "353833040538259":
+	    	#Crane
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "353833040538259"
+	    	new_image.projectName = "Central Park Observations"		
+	    	new_image.location = "Central Park New York, United States"
+	    	new_image.latitude = 40.7820
+	    	new_image.longitude = -73.9666
+	    	new_image.batterylife = 100
+	    	new_image.save()
+		
+		 		
 	   
 	# prepare the template data dictionary
 	templateData = {
@@ -471,6 +546,7 @@ def photostream():
 		'user_content'  : user_content,		
 		'users' : models.User.objects(),
 		'photolist':photoList,
+		'form':loginForm
 		# 'projectlist': projectList
 
 	}
@@ -551,6 +627,37 @@ def upload():
 		return render_template("upload.html", **templateData)
 
 
+@app.route("/addproject", methods=['GET','POST'])
+def addproject():
+
+	projectForm = models.add_project_form(request.form)
+	loginForm = models.LoginForm(request.form)
+	
+	if request.method == "POST":
+		newProject = models.Project()
+		newProject.name = request.form.get('name')
+		newProject.location = request.form.get('location')
+		newProject.UUID = request.form.get('UUID')
+		newProject.researcher = request.form.get('researcher')
+		newProject.save()
+
+		return redirect('/addproject')
+
+	else:
+		# get existing images
+		projects = models.Project.objects.order_by('-timestamp')
+
+		# render the template
+		templateData = {
+			'project' : projects,
+			'projectForm' :projectForm,
+			'form': loginForm
+		}
+
+		return render_template("addproject.html", **templateData)
+
+
+
 
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
     return value.strftime(format)
@@ -569,5 +676,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-# app.run(host='127.0.0.1', port=port)
+    # app.run(host='0.0.0.0', port=port)
+app.run(host='127.0.0.1', port=port)

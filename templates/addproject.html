@@ -1,0 +1,62 @@
+{%extends "layout.html" %}
+
+{% block styles %}
+<style>
+img {
+	width:320px;
+}
+</style>
+
+{% endblock %}
+{% block body %}
+
+	<div class="row">
+		<div class="span5">
+		    {% if projectForm.errors %}
+		    <ul class="errors">
+		        {% for field_name, field_errors in projectForm.errors|dictsort if field_errors %}
+		            {% for error in field_errors %}
+		                <li class="alert alert-error">
+		                	{{ projectForm[field_name].label.text }} - {{ error }}
+		               	</li>
+		            {% endfor %}
+		        {% endfor %}
+		    </ul>
+		    {% endif %}
+
+		    <h2>Submit a new Project</h2>
+			<form method="POST" enctype="multipart/form-data">
+				
+				{{ projectForm.name.label }}
+				{{ projectForm.name }}
+
+				{{ projectForm.location.label }}
+				{{ projectForm.location }}
+
+				{{ projectForm.researcher.label }}
+				{{ projectForm.researcher }}
+
+				{{ projectForm.UUID.label }}
+				{{ projectForm.UUID }}
+				
+				<input class="btn btn-success" type="submit" value="Submit">
+
+
+			</form>
+		</div>
+
+		<div class="span7">
+			<h2>Projects</h2>
+			<hr>
+			{% for project in projects %}
+				<h3>{{project.name}}</h3>
+					<br>
+					{{ project.location }} - {{ project.researcher}}
+			{% endfor %}
+		</div>
+
+	</div><!-- row -->
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

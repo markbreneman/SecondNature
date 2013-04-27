@@ -20,9 +20,12 @@ class User(mongoengine.Document):
 
 	active = mongoengine.BooleanField(default=True)
 	isAdmin = mongoengine.BooleanField(default=False)
+	isResearcher = mongoengine.BooleanField(default=False)
 	donated = mongoengine.BooleanField(default=False)
 	uuid = mongoengine.IntField(u'UUID', verbose_name="UUID")
+	
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
+
 	
 user_form = model_form(User, exclude=['password', 'name','address','address2','zipcode','state'])
 signup_form = model_form(User, exclude=['name','address','address2','zipcode','state'])
@@ -31,10 +34,11 @@ uuid_form = model_form(User, exclude=['password','name','email','address','addre
 
 
 class Project(mongoengine.Document):
-	name = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Name")
-	location = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Project Location")
-	researcher = mongoengine.StringField(unique=True, max_length=30, required=True, verbose_name="Researcher Name")
-	UUID =	mongoengine.ReferenceField('User', dbref=True) 
+	projectName = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Project Name")
+	location = mongoengine.StringField(unique=False, max_length=30, required=False, verbose_name="Project Location")
+	researcher = mongoengine.StringField(unique=False, max_length=30, required=False, verbose_name="Researcher Name")
+	# UUID =	mongoengine.ReferenceField('User', dbref=True) 
+	UUID =	mongoengine.StringField(unique=False, max_length=30, required=False, verbose_name="UUID")
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 
 project_form = model_form(Project)	
@@ -44,8 +48,15 @@ class Image(mongoengine.Document):
 
 	# test = mongoengine.StringField(verbose_name="File Names")
 	timeTaken = mongoengine.StringField(verbose_name="Time Taken")
+	timeTakenHuman = mongoengine.StringField(verbose_name="Time Taken Human")
 	UUID = mongoengine.StringField(verbose_name="Device ID - UUID")
 	filename = mongoengine.StringField()
+	latitude = mongoengine.FloatField()
+	longitude = mongoengine.FloatField()
+	batterylife = mongoengine.IntField()
+	location = mongoengine.StringField()
+	# project = mongoengine.ReferenceField('Project', dbref=True) 
+	projectName = mongoengine.StringField()
 
 	# Comments is a list of Document type 'Comments' defined above
 	# comments = mongoengine.ListField( mongoengine.EmbeddedDocumentField(Comment) )
@@ -56,9 +67,20 @@ class Image(mongoengine.Document):
 
 photo_form = model_form(Image)
 
+#Photo Upload Form Created from Photo form
 class photo_upload_form(photo_form):
 	fileupload = FileField('Upload an image file')
 
+
+
+#Project add Form Created from Project form
+class add_project_form(project_form):
+	projectName = TextField(u'Project Name')
+	location = TextField(u'Location Name')
+	researcher = TextField(u'Reseacher Name')
+	UUID =	TextField(u'UUID')
+	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
+	
 
 	
 # Signup Form created from user_form
