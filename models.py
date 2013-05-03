@@ -34,19 +34,17 @@ uuid_form = model_form(User, exclude=['password','name','email','address','addre
 
 
 class Project(mongoengine.Document):
-	projectName = mongoengine.StringField(unique=True, max_length=30, required=False, verbose_name="Project Name")
-	location = mongoengine.StringField(unique=False, max_length=30, required=False, verbose_name="Project Location")
-	researcher = mongoengine.StringField(unique=False, max_length=30, required=False, verbose_name="Researcher Name")
-	# UUID =	mongoengine.ReferenceField('User', dbref=True) 
-	UUID =	mongoengine.StringField(unique=False, max_length=30, required=False, verbose_name="UUID")
+	projectName = mongoengine.StringField(max_length=30, required=False, verbose_name="Project Name")
+	location = mongoengine.StringField(max_length=30, required=False, verbose_name="Project Location")
+	researcher = mongoengine.StringField(max_length=30, required=False, verbose_name="Researcher Name")
+	user =	mongoengine.ReferenceField('User', dbref=True) 
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 
 project_form = model_form(Project)	
-
+add_user_to_project_form= model_form(Project)	
 
 class Image(mongoengine.Document):
 
-	# test = mongoengine.StringField(verbose_name="File Names")
 	timeTaken = mongoengine.StringField(verbose_name="Time Taken")
 	timeTakenHuman = mongoengine.StringField(verbose_name="Time Taken Human")
 	UUID = mongoengine.StringField(verbose_name="Device ID - UUID")
@@ -77,11 +75,14 @@ class photo_upload_form(photo_form):
 class add_project_form(project_form):
 	projectName = TextField(u'Project Name')
 	location = TextField(u'Location Name')
-	researcher = TextField(u'Reseacher Name')
-	UUID =	TextField(u'UUID')
+	researcher = TextField(u'Researcher Name')
+	user =	TextField(u'User')
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 	
-
+class add_user_to_project_form(project_form):
+	projectName = TextField(u'Project Name')
+	user =	TextField(u'User')
+	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 	
 # Signup Form created from user_form
 class SignupForm(signup_form):

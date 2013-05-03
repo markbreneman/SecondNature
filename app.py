@@ -51,7 +51,8 @@ flask_bcrypt = Bcrypt(app)
 # using a remote db get connection string from heroku config
 # 	using a local mongodb put this in .env
 #   MONGOLAB_URI=mongodb://localhost:27017/secondnatureproject
-mongoengine.connect('userdemo', host=os.environ.get('MONGOLAB_URI'))
+# mongoengine.connect('userdemo', host=os.environ.get('MONGOLAB_URI'))
+mongoengine.connect('secondnatureproject', host=os.environ.get('MONGOLAB_URI'))
 app.logger.debug("Connecting to MongoLabs")
 
 # Login management defined
@@ -350,6 +351,8 @@ def welcome():
 
 	# get requested user's content
 	user_content = models.Content.objects
+
+	# userloggedin=current_user.get()
 	
 	# prepare registration form		
 	donateForm = models.DonateForm(request.form)
@@ -388,7 +391,7 @@ def donate():
 @app.route("/donated", methods=["POST"])
 def donated():
 
-	donateForm = models.DonateForm(request.form)
+	# donateForm = models.DonateForm(request.form)
 	userloggedin=current_user.get()
 
 	address = request.form['address']
@@ -396,9 +399,7 @@ def donated():
 	city = request.form['city']
 	state = request.form['state']
 	zipcode = request.form['zipcode']
-	
-
-	app.logger.info(request.form)
+	# app.logger.info(request.form)
 
 	# if request.method == 'POST' and donateForm.validate():
 	if request.method == 'POST':
@@ -436,119 +437,19 @@ def photostream():
 	app.logger.debug("Connecting to AWS")
 	bucket = s3conn.get_bucket(os.environ.get('AWS_BUCKET')) # bucket name defined in .env
 
-	#Variable for Bucket Parsing
-	photoList = []
-	# splitFileName = []
-	# uuidlist = []
-	# projects={}
-
 	#List all my file in the bucket and create a photoList
 	for key in bucket.list():
-	    photoList.append(key.name.encode('utf-8'))
 	    key.set_acl('public-read-write')
-	    #bucket is a an object of key values pairs: key.Bucket, key.name
-	    # app.logger.debug(key.name)    
-	    splitFileName = key.name.split("_",1)
-	    # app.logger.debug(splitFileName)    
-	    uuid=splitFileName[0]
-	    timestamp=float(splitFileName[1].split(".",1)[0])# In milliseconds
-	    convertedtime=time.strftime("%a, %B %d, %H:%M:%S %Y",  time.localtime(timestamp/1000))
-	    #This is temporary for looping over files already there.
-	    if uuid == "353833040538248":
-	    	#Tree Shrew
-	    	new_image = models.Image()
-	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
-	    	new_image.timeTakenHuman = convertedtime
-	    	new_image.filename = key.name
-	    	new_image.uuid = "353833040538248"
-	    	new_image.project = "Tenkile Conservation Alliance "		
-	    	new_image.location = "Wewak, Indonesia"
-	    	new_image.latitude = -0.2669
-	    	new_image.longitude = 100.3833
-	    	new_image.batterylife = 73
-	    	new_image.save()
-
-	    if uuid == "355031040939917":
-	    	#Tree Kangaroo
-	    	new_image = models.Image()
-	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
-	    	new_image.timeTakenHuman = convertedtime
-	    	new_image.filename = key.name
-	    	new_image.uuid = "355031040939917"
-	    	new_image.projectName = "Tenkile Conservation Alliance "		
-	    	new_image.location = "Wewak, Indonesia"
-	    	new_image.latitude = -0.2669
-	    	new_image.longitude = 100.3833
-	    	new_image.batterylife = 65
-	    	new_image.save()
-
-	    if uuid == "355031040939916":
-	    	#Tiger
-	    	new_image = models.Image()
-	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
-	    	new_image.timeTakenHuman = convertedtime
-	    	new_image.filename = key.name
-	    	new_image.uuid = "355031040939916"
-	    	new_image.projectName = "Amur Tiger Conservation Project "		
-	    	new_image.location = "Primorsky Krai, Siberia"
-	    	new_image.latitude = 43.1666
-	    	new_image.longitude = 131.9333
-	    	new_image.batterylife = 82
-	    	new_image.save()
-
-	    if uuid == "354653040538259":
-	    	#Ebony Langurs
-	    	new_image = models.Image()
-	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
-	    	new_image.timeTakenHuman = convertedtime
-	    	new_image.filename = key.name
-	    	new_image.uuid = "354653040538259"
-	    	new_image.projectName = "Biogeography Ebony Langurs Project "		
-	    	new_image.location = "Papua New Guinea, Indonesia"
-	    	new_image.latitude = -5.9054
-	    	new_image.longitude = 147.408
-	    	new_image.batterylife = 21
-	    	new_image.save()
-
-	    if uuid == "355031040939900":
-	    	#Crowned Guenon
-	    	new_image = models.Image()
-	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
-	    	new_image.timeTakenHuman = convertedtime
-	    	new_image.filename = key.name
-	    	new_image.uuid = "355031040939900"
-	    	new_image.projectName = "Okapi Wildlife Reserve"		
-	    	new_image.location = "Wamba, DR Congo"
-	    	new_image.latitude = -4.41667
-	    	new_image.longitude = 15.43333
-	    	new_image.batterylife = 33
-	    	new_image.save()
-
-	    if uuid == "353833040538259":
-	    	#Crane
-	    	new_image = models.Image()
-	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
-	    	new_image.timeTakenHuman = convertedtime
-	    	new_image.filename = key.name
-	    	new_image.uuid = "353833040538259"
-	    	new_image.projectName = "Central Park Observations"		
-	    	new_image.location = "Central Park New York, United States"
-	    	new_image.latitude = 40.7820
-	    	new_image.longitude = -73.9666
-	    	new_image.batterylife = 100
-	    	new_image.save()
-		
-		 		
+	
+	images = models.Image.objects.order_by('-timestamp')	    
 	   
 	# prepare the template data dictionary
 	templateData = {
 		'current_user' : current_user,
 		'user_content'  : user_content,		
 		'users' : models.User.objects(),
-		'photolist':photoList,
+		'images':images,
 		'form':loginForm
-		# 'projectlist': projectList
-
 	}
 	
 	return render_template('photostream.html', **templateData)
@@ -633,14 +534,15 @@ def addproject():
 	projectForm = models.add_project_form(request.form)
 	loginForm = models.LoginForm(request.form)
 	
+	
 	if request.method == "POST":
 		newProject = models.Project()
-		newProject.name = request.form.get('name')
+		newProject.projectName = request.form.get('projectName')
 		newProject.location = request.form.get('location')
-		newProject.UUID = request.form.get('UUID')
+		newProject.user = request.form.get('user')
 		newProject.researcher = request.form.get('researcher')
 		newProject.save()
-
+		
 		return redirect('/addproject')
 
 	else:
@@ -649,14 +551,12 @@ def addproject():
 
 		# render the template
 		templateData = {
-			'project' : projects,
+			'projects' : projects,
 			'projectForm' :projectForm,
 			'form': loginForm
 		}
 
 		return render_template("addproject.html", **templateData)
-
-
 
 
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
