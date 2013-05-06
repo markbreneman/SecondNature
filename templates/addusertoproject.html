@@ -9,6 +9,8 @@ img {
 
 {% endblock %}
 {% block body %}
+
+
 <div id="Donate" class="carousel slide scroll">
       <div class="carousel-inner">
           <div class="container">
@@ -26,39 +28,46 @@ img {
 		    </ul>
 		    {% endif %}
 
-		    <h2 class="copyText">Submit a new Project</h2>
+		    <h2 class="copyText">Add A User to A Project</h2>
 			<form method="POST" enctype="multipart/form-data">
 				
-				{{ projectForm.projectName.label }}
-				{{ projectForm.projectName }}
+				   <label class="dropdown">
+                        User Name: <select name="allUsers" id="allUsers">
+                            {% for user in allusers|sort %}
+                            <option value='{{ user.username }}' > {{ user.username }}
+                            {% endfor %}
+                        </select>
+                    </label>
 
-				{{ projectForm.location.label }}
-				{{ projectForm.location }}
-
-				{{ projectForm.researcher.label }}
-				{{ projectForm.researcher }}
-				<br>
+                    <label class="dropdown">
+                        Project Name: <select name="allProjects" id="allProjects">
+                            {% for project in allprojects|sort %}
+                             <option value='{{ project.projectName }}' > {{ project.projectName }}
+                            {% endfor %}
+                        </select>
+                    </label>
 				
-				<input class="btn btn-success" type="submit" value="Submit">
-
-
+				<input class="btn btn-success" type="submit" value="Submit"
 			</form>
 		</div>
 
 		<div class="span7">
-			<h2 class="copyText">Projects</h2>
+			<h2 class="copyText">Projects and Users</h2>
 			<hr>
 			{% for project in projects %}
 				<h3 class="copyText">{{project.projectName}}</h3>
+					<p class="copyText"><smaller> Researcher Name: {{ project.researcher}}</smaller></p>
 					<br>
-					<p class="copyText"><smaller>{{ project.location }} - {{ project.researcher}}</smaller></p>
+					<p class="copyText"><smaller>Project Location: {{ project.location }}</smaller></p>
+					<br>
+					<p class="copyText"><smaller>Users: {{ project.users }}</smaller></p>
+
 			{% endfor %}
 		</div>
-
 	</div><!-- row -->
 	</div>
 </div>
 </div>
-{% endblock %}
 
+{% endblock %}
 {% block scripts %}{% endblock %}

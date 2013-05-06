@@ -531,7 +531,7 @@ def upload():
 @app.route("/addproject", methods=['GET','POST'])
 def addproject():
 
-	projectForm = models.add_project_form(request.form)
+	projectForm = models.addprojectForm(request.form)
 	loginForm = models.LoginForm(request.form)
 	
 	
@@ -559,6 +559,41 @@ def addproject():
 		return render_template("addproject.html", **templateData)
 
 
+@app.route("/addusertoproject", methods=['GET','POST'])
+def addusertoproject():
+
+	projectForm = models.addusertoprojectForm(request.form)
+	loginForm = models.LoginForm(request.form)
+	
+	allProjects=models.Project.objects()
+	allUsers=models.User.objects()
+	
+	if request.method == "POST":
+
+		selectedUser = request.form.get('username')
+		selectedProject = request.form.get('projectName')
+		selectedProject.user=selectedUser
+		seleectedProject.save()
+		
+		return redirect('/addusertoproject')
+
+	else:
+		# get existing images
+		projects = models.Project.objects.order_by('-timestamp')
+
+		# render the template
+		templateData = {
+			'projects' : projects,
+			'projectForm' :projectForm,
+			'form': loginForm,
+			'allprojects' : allProjects,
+			'allusers': allUsers
+					}
+
+		return render_template("addusertoproject.html", **templateData)
+
+
+
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
     return value.strftime(format)
 
@@ -576,5 +611,5 @@ def page_not_found(error):
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    # app.run(host='0.0.0.0', port=port)
-app.run(host='127.0.0.1', port=port)
+    app.run(host='0.0.0.0', port=port)
+# app.run(host='127.0.0.1', port=port)

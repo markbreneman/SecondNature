@@ -37,7 +37,8 @@ class Project(mongoengine.Document):
 	projectName = mongoengine.StringField(max_length=30, required=False, verbose_name="Project Name")
 	location = mongoengine.StringField(max_length=30, required=False, verbose_name="Project Location")
 	researcher = mongoengine.StringField(max_length=30, required=False, verbose_name="Researcher Name")
-	user =	mongoengine.ReferenceField('User', dbref=True) 
+	# user =	mongoengine.ReferenceField('User', dbref=True)
+	user =	mongoengine.ListField(mongoengine.ReferenceField('User', dbref=True)) 
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 
 project_form = model_form(Project)	
@@ -72,16 +73,16 @@ class photo_upload_form(photo_form):
 
 
 #Project add Form Created from Project form
-class add_project_form(project_form):
+class addprojectForm(project_form):
 	projectName = TextField(u'Project Name')
 	location = TextField(u'Location Name')
 	researcher = TextField(u'Researcher Name')
 	user =	TextField(u'User')
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 	
-class add_user_to_project_form(project_form):
-	projectName = TextField(u'Project Name')
-	user =	TextField(u'User')
+class addusertoprojectForm(project_form):
+	projectName = SelectField(u'Project Name')
+	user =	SelectField(u'User')
 	timestamp = mongoengine.DateTimeField(default=datetime.datetime.now())
 	
 # Signup Form created from user_form
