@@ -63,6 +63,20 @@ login_manager.login_view = "login"
 login_manager.login_message = u"Please log in to access this page."
 login_manager.refresh_view = "reauth"
 
+
+images = models.Image.objects.order_by('-timestamp')	
+
+projectNameList=[]
+for image in images:
+	# app.logger.debug(image.projectName)
+	# app.logger.debug(projectNameList)
+	projectNameList.append(image.projectName)
+	projects = list(set(projectNameList))
+	# app.logger.debug(projects)
+	# app.logger.debug(projects[0])
+
+
+
 # Flask-Login requires a 'user_loader' callback 
 # This method will called with each Flask route request automatically
 # When this callback runs, it will populate the User object, current_user
@@ -84,6 +98,7 @@ login_manager.setup_app(app)
 
 # Amazon S3 file extensions
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
 
 # main route - display recent posts by all users
 @app.route('/')
@@ -119,6 +134,7 @@ def index():
 #
 @app.route('/users/<username>')
 def user(username):
+	loginForm = models.LoginForm(request.form)
 
 	# Does requested username exists, 404 if not
 	try:
@@ -134,6 +150,7 @@ def user(username):
 
 	# prepare the template data dictionary
 	templateData = {
+		'form':loginForm,
 		'user' : user,
 		'current_user' : current_user,
 		'user_content'  : user_content,
@@ -243,15 +260,19 @@ def admin_main():
 
 	projectForm = models.project_form(request.form)
 	uuidForm=models.uuid_form(request.form)	
+	# get the login and registration forms
+	donateForm = models.DonateForm(request.form)
+	
 
 	templateData = {
 		'allContent' : models.Content.objects(user=current_user.id),
 		'current_user' : current_user,
 		'project_form' : projectForm,
-		'uuid_form':uuidForm
+		'uuid_form':uuidForm,
+		'form' : donateForm
 	}
 
-	return render_template('admin.html', **templateData)
+	return render_template('donate.html', **templateData)
 		
 @app.route('/admin/<content_id>', methods=['GET','POST'])
 @login_required
@@ -433,15 +454,16 @@ def photostream():
 	user_content = models.Content.objects
 
 	#Connecting to S3
-	s3conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
-	app.logger.debug("Connecting to AWS")
-	bucket = s3conn.get_bucket(os.environ.get('AWS_BUCKET')) # bucket name defined in .env
+	# s3conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
+	# app.logger.debug("Connecting to AWS")
+	# bucket = s3conn.get_bucket(os.environ.get('AWS_BUCKET')) # bucket name defined in .env
 
 	#List all my file in the bucket and create a photoList
-	for key in bucket.list():
-	    key.set_acl('public-read-write')
+	# for key in bucket.list():
+	#     key.set_acl('public-read-write')
 	
-	images = models.Image.objects.order_by('-timestamp')	    
+	images = models.Image.objects.order_by('-timestamp')	 
+
 	   
 	# prepare the template data dictionary
 	templateData = {
@@ -449,10 +471,102 @@ def photostream():
 		'user_content'  : user_content,		
 		'users' : models.User.objects(),
 		'images':images,
+		'projects':projects,
 		'form':loginForm
 	}
 	
 	return render_template('photostream.html', **templateData)
+
+#
+# Display all the posts for a given user.
+#
+@app.route('/projects/<projectName>')
+def project(projectName):
+	loginForm = models.LoginForm(request.form)
+	images = models.Image.objects.order_by('-timestamp')
+
+	app.logger.debug(images)
+
+	# Does requested username exists, 404 if not
+	try:
+		project = models.Project.objects.get(projectName=projectName)		
+
+	except Exception:
+		e = sys.exc_info()
+		app.logger.error(e)
+		abort(404)
+
+	user_content = models.Content.objects
+	
+	# prepare registration form		
+	registerForm = models.SignupForm(request.form)
+
+	app.logger.info(request.form)
+
+	# prepare login form
+	loginForm = models.LoginForm(request.form)
+
+	# prepare the template data dictionary
+	templateData = {
+		'current_user' : current_user,
+		'user_content'  : user_content,
+		'form' : registerForm,
+		'login' :loginForm,
+		'images' :images,
+		'users' : models.User.objects(),
+		'project':project
+	}
+	
+	
+	app.logger.debug(current_user)
+
+	return render_template('project.html', **templateData)
+
+
+@app.route('/projects/<projectName>/<filename>')
+def filename(projectName,filename):
+	loginForm = models.LoginForm(request.form)
+	images = models.Image.objects.order_by('-timestamp')
+	
+
+	# Does requested username exists, 404 if not
+	try:
+		project = models.Project.objects.get(projectName=projectName)	
+		image = models.Image.objects.get(filename=filename)
+
+
+	except Exception:
+		e = sys.exc_info()
+		app.logger.error(e)
+		abort(404)
+
+	user_content = models.Content.objects
+	
+	# prepare registration form		
+	registerForm = models.SignupForm(request.form)
+
+	app.logger.info(request.form)
+
+	# prepare login form
+	loginForm = models.LoginForm(request.form)
+
+	# prepare the template data dictionary
+	templateData = {
+		'current_user' : current_user,
+		'user_content'  : user_content,
+		'form' : registerForm,
+		'login' :loginForm,
+		'image' :image,
+		'images':images,
+		'users' : models.User.objects(),
+		'project':project,
+		'projects':projects
+	}
+	
+	
+	app.logger.debug(current_user)
+
+	return render_template('projectimage.html', **templateData)
 
 @app.route("/upload", methods=['GET','POST'])
 def upload():
@@ -528,7 +642,7 @@ def upload():
 		return render_template("upload.html", **templateData)
 
 
-@app.route("/addproject", methods=['GET','POST'])
+@app.route("/admin/addproject", methods=['GET','POST'])
 def addproject():
 
 	projectForm = models.addprojectForm(request.form)
@@ -559,7 +673,7 @@ def addproject():
 		return render_template("addproject.html", **templateData)
 
 
-@app.route("/addusertoproject", methods=['GET','POST'])
+@app.route("/admin/addusertoproject", methods=['GET','POST'])
 def addusertoproject():
 
 	projectForm = models.addusertoprojectForm(request.form)

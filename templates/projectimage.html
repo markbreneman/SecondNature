@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block body %}
+      <div id="Welcome" class="carousel slide scroll">
+      <div class="carousel-inner">
+          <div class="container">
+            <div class="row">
+
+              <h1 class="sectionTitle">{{project.projectName}}</h1> 
+        
+              <div class="container" style="background-color: rgb(66,74,70);">
+              
+              <img src="/static/img/SlideshowLeft.png"style="margin-bottom:2%; margin-right:10px; float:left;">
+
+                    <div class="span8 offset1" style="margin-right:100px;">
+                    <img src="https://s3.amazonaws.com/secondnatureproject/{{image.filename}}" class="img-polaroid" style="margin-bottom:2%;">
+                    </div>
+
+             <img src="/static/img/SlideshowRight.png" class="" style="margin-bottom:2%; margin-right:10px; float:left;">
+
+                <div class="span7">
+                <h2 class="copyText" >Image Details </h2>
+
+                {%- if project.projectName == "Okapi Wildlife Reserve" -%}
+                <img src="https://s3.amazonaws.com/secondnatureproject/Users/SeanMcIntyre.jpeg" class="img-polaroid span2" style="margin-bottom:2%;  margin-right:20px;">
+                
+
+                 {%- elif project.projectName == "Amur Tiger Conservation Project" -%}
+                <img src="https://s3.amazonaws.com/secondnatureproject/Users/GavinHackeling.jpeg" class="img-polaroid span2" style="margin-bottom:2%;  margin-right:20px;">
+                
+
+                {%- elif project.projectName == "Tenkile Conservation Alliance" -%}
+                <img src="https://s3.amazonaws.com/secondnatureproject/Users/OlaOllson.png" class="img-polaroid span2" style="margin-bottom:2%;  margin-right:20px;">
+                
+
+                {% else %}
+                <img src="https://s3.amazonaws.com/secondnatureproject/Users/ITP.jpg" class="img-polaroid span2" style="margin-bottom:2%;  margin-right:20px;">
+
+                {% endif %}
+
+
+                <p style="color:white;">Donation Made By: {{image.donator}}</p>
+                <p style="color:white;">Image Status: Not Yet Identified</p>
+                <p style="color:white;">Photo Taken: {{image.timeTakenHuman}}</p>
+
+                </div>
+
+                <div class="span4">
+                <form>
+                <h2 class="copyText" >Identify </h2>
+                <p style="color:white;">Is there an animal in this photo?:</p>
+                <input id="identify-0" name="Animal Present" type="radio" value="Yes" style="float:left; margin-right:10px;">
+                <label>Yes</label>
+                <input id="identify-1" name="Animal Present" type="radio" value="No" style="float:left; margin-right:10px;">
+                <label>No</label>
+                <input type="submit" value="Submit" style="float:right;">
+                </form>
+                </div>
+
+              
+              <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'secondnatureproject'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                
+              
+              </div><!-- /.container -->
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+       </div>   
+    </div>
+
+{% endblock %}

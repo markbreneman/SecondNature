@@ -1,0 +1,271 @@
+	loginForm = models.LoginForm(request.form)
+
+	# get requested user's content
+	user_content = models.Content.objects
+
+	#Connecting to S3
+	s3conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
+	app.logger.debug("Connecting to AWS")
+	bucket = s3conn.get_bucket(os.environ.get('AWS_BUCKET')) # bucket name defined in .env
+
+	#Variable for Bucket Parsing
+	photoList = []
+	# splitFileName = []
+	# uuidlist = []
+	# projects={}
+
+	#List all my file in the bucket and create a photoList
+	for key in bucket.list():
+	    photoList.append(key.name.encode('utf-8'))
+	    key.set_acl('public-read-write')
+	    #bucket is a an object of key values pairs: key.Bucket, key.name
+	    # app.logger.debug(key.name)    
+	    splitFileName = key.name.split("_",1)
+	    # app.logger.debug(splitFileName)    
+	    uuid=splitFileName[0]
+	    timestamp=float(splitFileName[1].split(".",1)[0])# In milliseconds
+	    convertedtime=time.strftime("%a, %B %d, %H:%M:%S %Y",  time.localtime(timestamp/1000))
+	    #This is temporary for looping over files already there.
+	    if uuid == "353833040538248":
+	    	#Tree Shrew
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "353833040538248"
+	    	new_image.donator = "Ola Ollson"
+	    	new_image.projectName = "Tenkile Conservation Alliance"		
+	    	new_image.location = "Wewak, Indonesia"
+	    	new_image.latitude = -0.2669
+	    	new_image.longitude = 100.3833
+	    	new_image.batterylife = 73
+	    	new_image.save()
+
+	    if uuid == "355031040939917":
+	    	#Tree Kangaroo
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "355031040939917"
+	    	new_image.donator = "Ola Ollson"
+	    	new_image.projectName = "Tenkile Conservation Alliance"		
+	    	new_image.location = "Wewak, Indonesia"
+	    	new_image.latitude = -0.2669
+	    	new_image.longitude = 100.3833
+	    	new_image.batterylife = 65
+	    	new_image.save()
+
+	    if uuid == "355031040939916":
+	    	#Tiger
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "355031040939916"
+	    	new_image.donator = "Gavin Hackeling"
+	    	new_image.projectName = "Amur Tiger Conservation Project"		
+	    	new_image.location = "Primorsky Krai, Siberia"
+	    	new_image.latitude = 43.1666
+	    	new_image.longitude = 131.9333
+	    	new_image.batterylife = 82
+	    	new_image.save()
+
+	    if uuid == "354653040538259":
+	    	#Ebony Langurs
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "354653040538259"
+	    	new_image.donator = "ITP"
+	    	new_image.projectName = "Biogeography Ebony Langurs Project"		
+	    	new_image.location = "Papua New Guinea, Indonesia"
+	    	new_image.latitude = -5.9054
+	    	new_image.longitude = 147.408
+	    	new_image.batterylife = 21
+	    	new_image.save()
+
+	    if uuid == "355031040939900":
+	    	#Crowned Guenon
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "355031040939900"
+	    	new_image.donator = "Sean McIntyre"
+	    	new_image.projectName = "Okapi Wildlife Reserve"		
+	    	new_image.location = "Wamba, DR Congo"
+	    	new_image.latitude = -4.41667
+	    	new_image.longitude = 15.43333
+	    	new_image.batterylife = 33
+	    	new_image.save()
+
+	    if uuid == "353833040538259":
+	    	#Crane
+	    	new_image = models.Image()
+	    	new_image.timeTaken = splitFileName[1].split(".",1)[0]
+	    	new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "353833040538259"
+	    	new_image.donator = "ITP"
+	    	new_image.projectName = "Central Park Observations"		
+	    	new_image.location = "Central Park New York, United States"
+	    	new_image.latitude = 40.7820
+	    	new_image.longitude = -73.9666
+	    	new_image.batterylife = 100
+	    	new_image.save()
+        
+	    if uuid == "136778881526577":
+    	#Testing 
+    		new_image = models.Image()
+    		new_image.timeTaken = splitFileName[1].split(".",1)[0]
+    		new_image.timeTakenHuman = convertedtime
+	    	new_image.filename = key.name
+	    	new_image.uuid = "136778881526577"
+	    	new_image.donator = "ITP"
+	    	new_image.projectName = "Coyotes in Westchester"		
+	    	new_image.location = "Bedford New York, United States"
+	    	new_image.latitude = 41.2042
+	    	new_image.longitude = -73.6442
+	    	new_image.batterylife = 100
+	    	new_image.save()
+
+
+
+
+	# prepare the template data dictionary
+	templateData = {
+		'current_user' : current_user,
+		'user_content'  : user_content,		
+		'users' : models.User.objects(),
+		'photolist':photoList,
+		'form':loginForm
+		# 'projectlist': projectList
+
+	}
+
+	return render_template('photostream.html', **templateData)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	[
+    {
+        "_id": {
+            "$oid": "5192d43dbed89a7e0edcd87d"
+        },
+        "_types": [
+            "Project"
+        ],
+        "_cls": "Project",
+        "researcher": "Jim Thomas",
+        "projectName": "Tenkile Conservation Alliance",
+        "projectdescription":"The Tenkile Conservation Alliance (TCA) aims to save the critically endangered Tenkile Tree Kangaroo, or Scott's Tree Kangaroo (Dendrolagus scottae) and Weimang (Dendrolagus pulcherrimus) from becoming extinct.",
+        "projectblurb":"TCA's focus area is the Torricelli Mountain Range - north west Papua New Guinea. TCA researches the Tenkile and Weimang, conducts education and alternative livelihood projects and provides community development.The Tenkile Conservation Alliance is a Papua New Guinean non-government organisation.",
+        "location": "Wewak, Indonesia",
+        "timestamp": {
+            "$date": "2013-05-14T20:12:12.221Z"
+        },
+        "user": []
+    },
+    {
+        "_id": {
+            "$oid": "5192d53dbed89a7ea156c5c4"
+        },
+        "_types": [
+            "Project"
+        ],
+        "_cls": "Project",
+        "researcher": "Will Cannon",
+        "projectName": "Biogeography Ebony Langurs Project",
+        "projectdescription":"ProFauna Indonesia previously named KSBK (Wildlife Conservation For Life) is an independent, non-profit international networking in the field of wildlife protection and forest. ProFauna activities are non-political and non-violent. ProFauna was founded in 1994 in the city of Malang, East Java, Indonesia. The main activities are ProFauna campaigns, education, investigation and rescue animals.",
+        "projectblurb":" The Penanjung Pangandaran nature reserve is nearby on a peninsula connected to the mainland by a narrow neck of land. The isthmus is around 200 m wide. About eighty percent of the nature reserve is secondary rainforest.The flora of the nature reserve includes the Rafflesia",
+        "location": "Papua New Guinea, Indonesia",
+        "timestamp": {
+            "$date": "2013-05-14T20:22:19.122Z"
+        },
+        "user": []
+    },
+    {
+        "_id": {
+            "$oid": "5192d849bed89a7ea156c5c5"
+        },
+        "_types": [
+            "Project"
+        ],
+        "_cls": "Project",
+        "researcher": "Melissa Smith",
+        "projectName": "Okapi Wildlife Reserve",
+        "projectdescription":"The goal of the project is ensure the conservation of World Heritage Sites in the DRC both during periods of civil unrest and the long term, by mobilizing financial, logistical, technical and diplomatic support at the regional and international levels, to strengthen the conservation of the sites and ICCN (Institut Congolais de la Conservation de la Nature) as a whole. The project will also function as a learning process to inform efforts and develop mechanisms to conserve similar sites in conflict regions elsewhere in the world.",
+        "projectblurb":"The Okapi Wildlife Reserve occupies about one-fifth of the Ituri forest in the north-east of the Democratic Republic of the Congo. The Congo river basin, of which the reserve and forest are a part, is one of the largest drainage systems in Africa. The reserve contains threatened species of primates and birds and about 5,000 of the estimated 30,000 okapi surviving in the wild. It also has some dramatic scenery, including waterfalls on the Ituri and Epulu rivers. The reserve is inhabited by traditional nomadic pygmy Mbuti and Efe hunters.",
+        "location": "Wamba, DR Congo",
+        "timestamp": {
+            "$date": "2013-05-14T20:22:19.122Z"
+        },
+        "user": []
+    },
+    {
+        "_id": {
+            "$oid": "5192dc78bed89a7ea156c5c6"
+        },
+        "_types": [
+            "Project"
+        ],
+        "_cls": "Project",
+        "researcher": "Svetlana Soutyrina",
+        "projectName": "Amur Tiger Conservation Project",
+        "projectdescription":"Amur tiger conservation project is focused on non-invasive population monitoring, anti-poaching efforts, and increasing education and awareness.",
+        "projectblurb":"The Amur tiger (Panthera tigris altaica) is one of the largest living cats in the world. It is one of the only tiger subspecies that is not in decline, and this is partly due to the assiduous conservation work being carried out to keep its populations stable. ZSL has been involved in Amur tiger conservation in the Russian Far East since 1995 and has been running its own project in Lazovsky State Nature Reserve since 2006.",
+        "location": "Primorsky Krai, Siberia",
+        "timestamp": {
+            "$date": "2013-05-14T20:22:19.122Z"
+        },
+        "user": []
+    },
+    {
+        "_id": {
+            "$oid": "5192dcf8bed89a7ea156c5c7"
+        },
+        "_types": [
+            "Project"
+        ],
+        "_cls": "Project",
+        "researcher": "Gary Rozman",
+        "projectName": "Central Park Observations",
+        "projectdescription":"",
+        "projectblurb":"",
+        "timestamp": {
+            "$date": "2013-05-14T20:22:19.122Z"
+        },
+        "user": []
+    },
+    {
+        "_id": {
+            "$oid": "5192dd7cbed89a80b1a4ef27"
+        },
+        "_types": [
+            "Project"
+        ],
+        "_cls": "Project",
+        "researcher": "Chris Nagy",
+        "projectName": "Coyotes in Westchester",
+        "projectdescription":"In the past few decades, coyotes have greatly expanded their range east from the deserts and plains of the Western United States into nearly the entire midwest and east coast, and have colonized many urban centers outside of their historical range such as Chicago and Boston. In New York State, the species has colonized the suburban and urban areas of Westchester County, and most recently individuals have been observed in New York City, although there has yet to be any breeding populations found in the island-bound sections of New York City or Nassau and Suffolk Counties on Long Island. To facilitate human-coyote coexistence, wildlife professionals are especially interested in predicting where coyotes will establish themselves and where coyotes and humans are likely to come into contact. We are developing and testing a citizen science-based landscape model of human-coyote interaction (HCI).",
+        "projectblurb":"Founded in 1953, Mianus River Gorge, Inc. is dedicated to preserving, protecting and promoting appreciation of the natural heritage of the Mianus River Gorge and the quality of its watershed.",
+        "location": "Bedford New York, United States",
+        "timestamp": {
+            "$date": "2013-05-14T20:57:31.225Z"
+        },
+        "user": []
+    }
+]

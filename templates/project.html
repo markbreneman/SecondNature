@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block body %}
+      <div id="Welcome" class="carousel slide scroll">
+      <div class="carousel-inner">
+          <div class="container">
+            <div class="row">
+
+              <h1 class="sectionTitle">{{project.projectName}}</h1> 
+            <div class="span6">
+              <h2 class="copyText ">About this Project</h2>
+              <p style="color:white;">{{project.projectblurb}}</p>
+
+              <h2 class="copyText ">Project Description</h2>
+              <p style="color:white;">{{project.projectdescription}}</p>
+
+            </div>
+
+              {%- if project.projectName == "Coyotes in Westchester" -%}
+              <iframe width='500' height='300' frameBorder='0' src='http://a.tiles.mapbox.com/v3/markbreneman.map-jnobn0m7.html#9/41.05034729781477/-73.72987287614218'></iframe>
+              {% endif %}
+
+              {%- if project.projectName == "Biogeography Ebony Langurs Project" -%}
+              <iframe width='500' height='300' frameBorder='0' src='http://a.tiles.mapbox.com/v3/markbreneman.map-jnobn0m7.html#6/-6.342751610119392/147.26219416486097'></iframe>
+              {% endif %}
+
+              {%- if project.projectName == "Tenkile Conservation Alliance" -%}
+              <iframe width='500' height='300' frameBorder='0' src='http://a.tiles.mapbox.com/v3/markbreneman.map-jnobn0m7.html#7/-4.3684755665563735/144.39750910626722'></iframe>
+              {% endif %}
+
+              {%- if project.projectName == "Okapi Wildlife Reserve" -%}
+            <iframe width='500' height='300' frameBorder='0' src='http://a.tiles.mapbox.com/v3/markbreneman.map-jnobn0m7.html#4/8.558613860205314/26.952178094164424'></iframe>
+              {% endif %}
+
+              {%- if project.projectName == "Central Park Observations" -%}
+              <iframe width='500' height='300' frameBorder='0' src='http://a.tiles.mapbox.com/v3/markbreneman.map-jnobn0m7.html#15/40.7673636253505/-73.97288414864283'></iframe>
+              {% endif %}
+
+
+              {%- if project.projectName == "Amur Tiger Conservation Project" -%}
+              <iframe width='500' height='300' frameBorder='0' src='http://a.tiles.mapbox.com/v3/markbreneman.map-jnobn0m7.html#4/38.58999999999999/125.19999999999996'></iframe>
+              {% endif %}
+
+              
+
+              <div class="container span12 projects">
+              {% for image in images%}
+
+
+              {%- if image.projectName == project.projectName -%}
+
+              <a href="/projects/{{project.projectName }}/{{image.filename}}">
+              <img src="https://s3.amazonaws.com/secondnatureproject/{{image.filename}}" class="img-polaroid span2" style="margin-bottom:2%;">
+              </a>
+              
+              {% endif %}
+              {% endfor %}
+              
+                
+              </div><!-- /.container -->
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+       </div>   
+    </div>
+
+{% endblock %}

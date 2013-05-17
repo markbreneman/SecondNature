@@ -10,16 +10,37 @@
           
               <h3 class="copyText">Below are all the Research Projects currently involved with The Second Nature Project.</h3>
 
-              {% for image in images %}
+              <div class="container span12 projects">
+              {%for project in projects %}
 
-              <!-- {%- if image.project -%}...{% endif %} -->
+                <div class="project row span6" style="margin-left:0; margin-right:10px;">
+                <h3 style= "color:white;"> {{project }}</h3>  
+                  <div class="span6" style="margin-left:0; margin-right:10px; padding-top:10px; padding-bottom:7px; background-color: rgb(66,74,70);; overflow:hidden">
+                  {% set counter = 0 %}
 
-              <a href="https://s3.amazonaws.com/secondnatureproject/{{image.filename}}">
-              <img src="https://s3.amazonaws.com/secondnatureproject/{{image.filename}}" class="img-polaroid">
-              </a>
-        <br>
+                  {% for image in images %}
+
+                  {%- if image.projectName == project and counter <= 2 -%}
+                  {% set counter = counter + 1 %}
+                  <!-- <a href="https://s3.amazonaws.com/secondnatureproject/{{image.filename}}"> </a>-->
+                  
+                  <!-- <a href="/projects/{{project}}/{{image.filename}}"> -->
+                  <a href="/projects/{{project}}" style="color:white;">
+                    <div class="span2" style="margin-left:5px;">
+                      <img src="https://s3.amazonaws.com/secondnatureproject/{{image.filename}}">
+                    </div>
+                  </a>
+                  <!-- </a>                   -->
+                  
+                  {% endif %}
+                  {% endfor %}
+                 <div class="offset4 span2">
+                   <h6><a href="/projects/{{project}}" style="color:white;"> More photos</a></h6>
+                 </div>
+                  </div>
+                </div>
               {% endfor %}
-
+              </div><!-- /.container -->
             </div><!-- /.row -->
           </div><!-- /.container -->
        </div>   
